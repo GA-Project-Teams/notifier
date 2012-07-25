@@ -1,0 +1,22 @@
+# This is a sample of how your database.yml file should be setup, 
+# but with your own user credentials of your local setup.
+# After you're done modifying this file to mirror setup, save this as database.yml
+
+common: &common
+  adapter: postgresql
+  username: sampleuser
+  password: samplepassword
+  host: localhost
+  port: 5432
+
+development:
+  <<: *common
+  database: notifier_development
+
+test:
+  <<: *common
+  database: notifier_test
+
+production:
+  <<: *common
+  database: notifier_production
