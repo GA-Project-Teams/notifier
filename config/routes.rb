@@ -1,8 +1,4 @@
-Notifier::Application.routes.draw do
-  
-  get "users/index"
-
-  get "users/show"
+Notifier::Application.routes.draw do  
 
   devise_for :users
 
