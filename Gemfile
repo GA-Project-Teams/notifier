@@ -19,6 +19,8 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass_twitter_bootstrap'
+  gem 'compass-rails'
 end
 
 gem 'jquery-rails'
