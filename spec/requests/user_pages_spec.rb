@@ -6,37 +6,68 @@ describe "UserPages" do
       visit users_path
     end
     let(:user) { FactoryGirl.create(:user) }
-    xit "and sign up and login successfully" do
-      click_link "Sign up"
-      
-      fill_in 'user_email', :with => @user.email
-      fill_in 'user_first_name', :with => @user.first_name
-      fill_in 'user_last_name', :with => @user.last_name
-      fill_in 'user_password', :with => @user.password
-      fill_in 'user_password_confirmation', :with => @user.password
-      
-      click_button "Sign up"
-      
-      page.should have_content(@user.email)
-      # page.should have_content("Signed in successfully.")
-      # page.current_path.should == users_path
-      
-    end
-  
+    
     it "and login successfully" do
-      user.valid?.should be_true
+      
+      # expect { user2.save }.to change { User.count }.by(1)
       
       fill_in 'user_email', :with => user.email
       fill_in 'user_password', :with => user.password
       click_button "Sign in"
       
-      p user.email
-      p user.password
-      
-      
-      page.should have_content("You have signed in successfully.")
+      # page.should have_content("You have signed in successfully.")
       page.should have_content(user.email)
     end
+  
+    it "and login with a bad password and not login successfully" do
+      fill_in 'user_email', :with => user.email
+      fill_in 'user_password', :with => "badpassword"
+      click_button "Sign in"
+      
+      page.should have_content("Invalid email or password")
+    end
+    
+    it "and login and edit profile successfully" do
+      
+      fill_in 'user_email', :with => user.email
+      fill_in 'user_password', :with => user.password
+      click_button "Sign in"
+      
+      # page.should have_content("You have signed in successfully.")
+      page.should have_content(user.email)
+      
+      click_link "Edit profile"
+      
+      fill_in 'user_email', :with => user.email
+      # fill_in 'user_first_name', :with => user.first_name
+      # fill_in 'user_last_name', :with => user.last_name
+      fill_in 'user_password', :with => "new_password"
+      fill_in 'user_password_confirmation', :with => "new_password"
+      fill_in 'user_current_password', :with => user.password
+      
+      # expect { user.password }.to change 
+      
+      click_button "Update"
+      
+    end
+    
+    it "and login and logout successfully" do
+      
+      # expect { user2.save }.to change { User.count }.by(1)
+      
+      fill_in 'user_email', :with => user.email
+      fill_in 'user_password', :with => user.password
+      click_button "Sign in"
+      
+      # page.should have_content("You have signed in successfully.")
+      page.should have_content(user.email)
+      
+      click_link "Logout"
+      page.current_path.should == root_path
+      page.should have_content("Signed out successfully.")
+      
+    end
+    
   
   end
   
