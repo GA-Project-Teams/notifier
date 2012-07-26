@@ -12,8 +12,7 @@ describe User do
   end
   
   it "should change the number of Users" do
-    user = User.new(first_name: "peter", last_name: "to", email: "test@test.com")
-    expect { user.save }.to change { User.count }.by(1)
+    expect { user = FactoryGirl.create(:user) }.to change { User.count }.by(1)
   end
   
   it "raises an error with an email" do
@@ -26,5 +25,7 @@ describe User do
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
   
 end
