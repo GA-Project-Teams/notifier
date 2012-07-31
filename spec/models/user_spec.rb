@@ -15,7 +15,7 @@ describe User do
     expect { user = FactoryGirl.create(:user) }.to change { User.count }.by(1)
   end
   
-  it "raises an error with an email" do
+  it "raises an error without an email" do
     user = User.new
     expect { user.save! }.to raise_error(
       ActiveRecord::RecordInvalid

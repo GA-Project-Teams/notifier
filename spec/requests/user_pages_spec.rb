@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "UserPages" do
-  describe "should visit login page", :js => true do
+  describe "should visit login page" do
     before do
       visit users_path
     end
@@ -65,6 +65,17 @@ describe "UserPages" do
       click_link "Logout"
       page.current_path.should == root_path
       page.should have_content("Signed out successfully.")
+      
+    end
+    
+    it "and reset password", :js => true do
+      
+      click_link "Forgot your password?"
+      fill_in 'user_email', :with => user.email      
+      click_button 'Send me reset password instructions'
+      
+      page.should have_content("You will receive an email with instructions about how to reset your password in a few minutes.")
+      # save_and_open_page
       
     end
     
