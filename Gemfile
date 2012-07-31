@@ -25,6 +25,10 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+  gem 'heroku_san'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
