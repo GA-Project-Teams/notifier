@@ -68,7 +68,17 @@ describe "UserPages" do
       
     end
     
-  
+    it "and reset password" do
+      ActionMailer::Base.deliveries = []
+      
+      click_link "Forgot your password?"
+      fill_in 'user_email', :with => user.email      
+      click_button "Reset Password"
+      
+      # page.should have_content("THANKS!")
+      # save_and_open_page
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
   end
   
 end

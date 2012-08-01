@@ -1,15 +1,17 @@
-<h2>Forgot your password?</h2>
+<section id="content-area" class="box">
+	<h2>Forgot your password?</h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= f.error_notification %>
+	<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+	  <%= f.error_notification %>
 
-  <div class="inputs">
-    <%= f.input :email, :required => true %>
-  </div>
+	  <div class="inputs">
+	    <%= f.input :email, :required => true, :class=>"field-message" %>
+	  </div>
 
-  <div class="actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+	  <div class="actions">
+	    <%= f.button :submit, "RESET PASSWORD", :class=>"red-button" %>
+	  </div>
+	<% end %>
 
-<%= render :partial => "devise/shared/links" %>
+	<%= render :partial => "devise/shared/links" %>
+</section>
