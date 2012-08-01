@@ -5,11 +5,11 @@
 	  <%= f.error_notification %>
 
 	  <div class="inputs">
-	    <%= f.input :email, :required => true %>
+	    <%= f.input :email, :required => true, :class=>"field-message" %>
 	  </div>
 
 	  <div class="actions">
-	    <%= f.button :submit, "Send me reset password instructions" %>
+	    <%= f.button :submit, "RESET PASSWORD", :class=>"red-button" %>
 	  </div>
 	<% end %>
 

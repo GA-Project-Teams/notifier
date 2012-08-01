@@ -4,6 +4,12 @@
 @import "compass/reset";
 @import "compass_twitter_bootstrap";
 @import "compass_twitter_bootstrap_responsive";
+@import "compass/layout/sticky-footer";
+
+
+/* Mixins ************************************************/
+
+@include sticky-footer(30px, "#wrapper", "#layout_footer", "footer");
 
 /* 00 - general ******************************************/
 body { font-family: arial, helvetica, sans-serif; font-size: 12px; }
@@ -16,12 +22,24 @@ p { font-family: arial, helvetica, sans-serif; font-size: 12px; }
 
 a { text-decoration: none; text-transform: uppercase; color: #999; }
 
-/* 02 - content *******************************************/
+/* 0 - content *******************************************/
 #container { background: #ffffff; }
 
 .box { border: 12px solid #000000; margin: 20px auto 20px auto; padding: 25px 25px 25px 25px; }
 
-/* 03 - footer *******************************************/
+/* 0 - form *******************************************/
+
+.actions { width: 300px; }
+
+.red-button { display: block; width:250px !important; padding: 15px 0px 15px 0px; margin-top: 20px; border: none; color: #ffffff; text-align: center; background: #F03; cursor: pointer; font-size: 14px; }
+
+.field-name { height: 50px; width: 434px; border: none; padding-left:15px; margin-bottom:20px; color: #999; background: #E2E2E2; }
+
+.field-message { height: 75px; width: 434px; border: none; padding: 10px 0px 0px 15px; margin-bottom:20px; color: #999; background: #E2E2E2; }
+
+.content-link { display: block; width:50px; float: left; }
+
+/* 0 - footer *******************************************/
 footer {
 	background: #333333; color: #999; height: 30px; padding: 15px 0px 10px 25px;
 
