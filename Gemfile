@@ -19,11 +19,15 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass_twitter_bootstrap'
-  gem 'compass-rails'
 end
 
+gem 'compass_twitter_bootstrap'
+gem 'compass-rails'
 gem 'jquery-rails'
+
+group :development do
+  gem 'heroku_san'
+end
 
 group :development, :test do
   gem 'rspec-rails'
