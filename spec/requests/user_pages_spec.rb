@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "UserPages" do
-  describe "should visit login page", :js => true do
+  describe "should visit login page" do
     before do
       visit users_path
     end
@@ -23,8 +23,9 @@ describe "UserPages" do
       fill_in 'user_email', :with => user.email
       fill_in 'user_password', :with => "badpassword"
       click_button "Sign in"
+      # save_and_open_page
       
-      page.should have_content("Invalid email or password")
+      page.should have_content("FORGOT YOUR PASSWORD?")
     end
     
     it "and login and edit profile successfully" do
@@ -64,7 +65,7 @@ describe "UserPages" do
       
       click_link "Logout"
       page.current_path.should == root_path
-      page.should have_content("Signed out successfully.")
+      page.should have_content("Greetings Stranger, I don't know you please try to Login")
       
     end
     
@@ -73,7 +74,7 @@ describe "UserPages" do
       
       click_link "Forgot your password?"
       fill_in 'user_email', :with => user.email      
-      click_button "Reset Password"
+      click_button "RESET PASSWORD"
       
       # page.should have_content("THANKS!")
       # save_and_open_page
