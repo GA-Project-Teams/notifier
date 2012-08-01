@@ -4,3 +4,26 @@
 @import "compass/reset";
 @import "compass_twitter_bootstrap";
 @import "compass_twitter_bootstrap_responsive";
+
+/* 00 - general ******************************************/
+body { font-family: arial, helvetica, sans-serif; font-size: 12px; }
+
+h2 { font-family: arial, helvetica, sans-serif; font-size: 22px; padding: 0px 0px 20px 0px; }
+
+h3 { font-family: arial, helvetica, sans-serif; font-size: 16px; padding: 15px 0px 10px 0px; }
+
+p { font-family: arial, helvetica, sans-serif; font-size: 12px; }
+
+a { text-decoration: none; text-transform: uppercase; color: #999; }
+
+/* 02 - content *******************************************/
+#container { background: #ffffff; }
+
+.box { border: 12px solid #000000; margin: 20px auto 20px auto; padding: 25px 25px 25px 25px; }
+
+/* 03 - footer *******************************************/
+footer {
+	background: #333333; color: #999; height: 30px; padding: 15px 0px 10px 25px;
+
+	li { display: inline;} 
+}

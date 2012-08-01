@@ -5,21 +5,20 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
-  <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Login", new_user_session_path %>
-  <% end %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div id="wrapper">
+    <%= render 'layouts/header' %>
+    <div id="container" class="container-fluid" >
+      <div class="row">
+        <div class="span6 offset3">
+          <%= yield %>
+      </div>
+      </div>
+    </div> <!-- END CONTAINER DIV-->
 
-<%= yield %>
-
+  <%= render 'layouts/footer' %>
+  </div> <!-- END WRAPPER DIV-->
 </body>
 </html>
