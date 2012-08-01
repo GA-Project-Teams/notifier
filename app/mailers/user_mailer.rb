@@ -9,8 +9,7 @@ class UserMailer < ActionMailer::Base
   def signup_confirmation
     @greeting = "Hi"
 
-    result = mail to: "pt9386@gmail.com"
+    return mail to: "pt9386@gmail.com"
     
-    return result
   end
 end

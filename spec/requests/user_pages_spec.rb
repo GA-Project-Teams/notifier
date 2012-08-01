@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "UserPages" do
-  describe "should visit login page" do
+  describe "should visit login page", :js => true do
     before do
       visit users_path
     end
@@ -68,18 +68,17 @@ describe "UserPages" do
       
     end
     
-    it "and reset password", :js => true do
+    it "and reset password" do
+      ActionMailer::Base.deliveries = []
       
       click_link "Forgot your password?"
       fill_in 'user_email', :with => user.email      
-      click_button 'Send me reset password instructions'
+      click_button "Reset Password"
       
-      page.should have_content("You will receive an email with instructions about how to reset your password in a few minutes.")
+      # page.should have_content("THANKS!")
       # save_and_open_page
-      
+      ActionMailer::Base.deliveries.should_not be_empty
     end
-    
-  
   end
   
 end
