@@ -6,6 +6,7 @@ describe "UserAddPages" do
     visit root_path
     click_button 'ADD CONTACT'
     let(:user) { FactoryGirl.create(:user) }
+    sign_in :user
     
     it "and add new user" do
       fill_in 'user_first_name', :with => user.first_name
@@ -29,7 +30,7 @@ describe "UserAddPages" do
     
     it "and cancel adding users" do
       click_link "OR CANCEL"
-      current_url.should == root_url("en")
+      page.current_path.should == root_path
     end
   end
 end
