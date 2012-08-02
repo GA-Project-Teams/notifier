@@ -1,0 +1,12 @@
+<%= simple_form_for(@user) do |f| %>
+
+  
+  <%= f.input :first_name, :required => true %>
+  <%= f.input :last_name, :required => true %>
+  <%= f.input :email, :required => true, :autofocus => true %>
+  <%= f.input :company_name, :required => true, :autofocus => true %>
+  <%= f.input :preference, :required => true, :autofocus => true %>
+  <%= f.input :password, :required => true %>
+  <%= f.input :password_confirmation, :required => true %>
+
+<% end %>

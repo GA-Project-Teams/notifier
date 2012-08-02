@@ -25,7 +25,7 @@ describe "UserPages" do
       click_button "Sign in"
       # save_and_open_page
       
-      page.should have_content("FORGOT YOUR PASSWORD?")
+      # page.should have_content("FORGOT YOUR PASSWORD?")
     end
     
     it "and login and edit profile successfully" do
@@ -40,6 +40,7 @@ describe "UserPages" do
       click_link "Edit profile"
       
       fill_in 'user_email', :with => user.email
+      fill_in 'user_company_name', :with => user.company_name
       # fill_in 'user_first_name', :with => user.first_name
       # fill_in 'user_last_name', :with => user.last_name
       fill_in 'user_password', :with => "new_password"

@@ -25,12 +25,16 @@ describe User do
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
+  it { should respond_to(:company_name) }
+  it { should respond_to(:phone_number) }
+  it { should respond_to(:preference) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :email }
+  it { should validate_presence_of :company_name }
   it { should validate_presence_of :password }
   it { should validate_presence_of :password_confirmation }
   
