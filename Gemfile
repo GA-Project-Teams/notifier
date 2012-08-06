@@ -43,6 +43,10 @@ group :development, :test do
   gem 'guard-spork'
   gem 'growl'
 end
+
+group :test do
+  gem 'email_spec'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
