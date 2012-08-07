@@ -1,3 +1,0 @@
-sendgrid:
-  username: <%= ENV["SENDGRID_USERNAME"] %>
-  password: <%= ENV["SENDGRID_PASSWORD"] %> 

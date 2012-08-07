@@ -71,8 +71,8 @@ Notifier::Application.configure do
       domain: "ga-notifier.herokuapp.com",
       authentication: "plain",
       enable_starttls_auto: true,
-      user_name: Settings.sendgrid.username,
-      password: Settings.sendgrid.password
+      user_name: ENV["SENDGRID_USERNAME"],
+      password: ENV["SENDGRID_PASSWORD"]
     }
 
   _explain_threshold_in_seconds = 0.5
