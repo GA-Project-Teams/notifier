@@ -3,8 +3,9 @@
 
 	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 	  <div class="inputs">
-	    <%= f.input :email, :required => false, :autofocus => true, :class=>"field-name" %>
-	    <%= f.input :password, :required => false, :class=>"field-name" %>
+	  	<p>Please enter your email and password below.</p>
+	    <%= f.input :email, :required => false, :autofocus => true, :input_html=> { :class=>"field-name", :placeholder=>"Email"}, :label => false %>
+	    <%= f.input :password, :required => false, :input_html=> { :class=>"field-name", :placeholder=>"Password"}, :label => false %>
 	    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
 	  </div>
 
