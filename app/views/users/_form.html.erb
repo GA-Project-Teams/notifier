@@ -1,12 +1,18 @@
 <%= simple_form_for(@user) do |f| %>
 
-  
-  <%= f.input :first_name, :required => true %>
-  <%= f.input :last_name, :required => true %>
-  <%= f.input :email, :required => true, :autofocus => true %>
-  <%= f.input :company_name, :required => true, :autofocus => true %>
-  <%= f.input :preference, :required => true, :autofocus => true %>
-  <%= f.input :password, :required => true %>
-  <%= f.input :password_confirmation, :required => true %>
+  <div class='inputs'>
+    <% generated_password = Devise.friendly_token.first(10) %>
+    <%= f.input :first_name, :required => true %>
+    <%= f.input :last_name, :required => true %>
+    <%= f.input :email, :required => true, :autofocus => true %>
+    <%= f.input :company_name, :required => true, :autofocus => true %>
+    <%= f.input :preference, :required => false, :autofocus => true, :as => :select, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1' %>
+    <%= f.input :password, :readonly => true, :input_html => { :value => generated_password } %>
+    <%= f.input :password_confirmation, :readonly => true, :input_html => { :value => generated_password } %>
+  </div>
 
+  <div class='actions'>
+    <%= f.button :submit, "ADD CONTACT", :class=>"red-button" %>
+    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+  </div>
 <% end %>

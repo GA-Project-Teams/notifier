@@ -4,5 +4,6 @@ Notifier::Application.routes.draw do
 
   root :to => "home#index"
   resource :users
+  match "/users/add", :to => "users#new"
 
 end

@@ -76,7 +76,7 @@ module Notifier
       authentication: "plain",
       enable_starttls_auto: true,
       user_name: "ga.notifier@gmail.com",
-      password: "GAnotifier1"
+      password: "dontchange_GAnotifier1"
     }
   end
 end

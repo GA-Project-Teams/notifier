@@ -10,7 +10,7 @@
       <%= f.input :email, :required => true, :autofocus => true %>
       <%= f.input :company_name, :required => true, :autofocus => true %>
       <%= f.input :phone_number, :required => true, :autofocus => true %>
-      <%= f.input :preference, :required => true, :autofocus => true %>
+      <%= f.input :preference, :required => true, :autofocus => true, :collection => [['SMS','1'],['Email','2'],['Both','3']] %>
       <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
       <%= f.input :password_confirmation, :required => false %>
       <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
