@@ -18,7 +18,7 @@ describe "UserAddPages" do
       
     end
     
-    it "and add new user", :js => true do
+    it "and add new user" do
       visit new_user_path
       # click_button 'ADD CONTACT'
       # test_user = Factory.create(:user)
