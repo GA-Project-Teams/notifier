@@ -65,7 +65,7 @@ describe "UserPages" do
       page.should have_content(user.email)
      
       click_link "Logout"
-      save_and_open_page
+      
       page.current_path.should == root_path
       page.should have_content("Greetings Stranger, I don't know you please try to Login")
       
