@@ -11,8 +11,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    @user.password = User.reset_password_token
-    @user.reset_password_token = User.reset_password_token
+    @user.enable_strict_validation = true
   end
 
   def create
@@ -20,6 +19,7 @@ class UsersController < ApplicationController
     # @user = User.new(params[:user], :password => generated_password, :password_confimration => generated_password)
     @user = User.new(params[:user])
     # @user.skip_confirmation!
+    @user.enable_strict_validation = true
     if @user.save
       redirect_to(@user, :notice => 'User was successfully created.')
     else
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id]) 
     if @user.update_attributes(params[:user])
-      redirect_to :root_path
+      redirect_to(@user, :notice => 'User was updated successfully.')
     else
       render action: 'edit'
     end

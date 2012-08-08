@@ -53,7 +53,7 @@ describe "UserPages" do
       
     end
     
-    it "and login and logout successfully" do
+    it "and login and logout successfully", :js => true do
       
       # expect { user2.save }.to change { User.count }.by(1)
       
@@ -65,6 +65,7 @@ describe "UserPages" do
       page.should have_content(user.email)
       
       click_link "LOGOUT"
+      save_and_open_page
       page.current_path.should == root_path
       page.should have_content("Greetings Stranger, I don't know you please try to Login")
       
