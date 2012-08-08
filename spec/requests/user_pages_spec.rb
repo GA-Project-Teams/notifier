@@ -63,8 +63,8 @@ describe "UserPages" do
       
       # page.should have_content("You have signed in successfully.")
       page.should have_content(user.email)
-      
-      click_link "LOGOUT"
+     
+      click_link "Logout"
       save_and_open_page
       page.current_path.should == root_path
       page.should have_content("Greetings Stranger, I don't know you please try to Login")
@@ -78,8 +78,6 @@ describe "UserPages" do
       fill_in 'user_email', :with => user.email      
       click_button "RESET PASSWORD"
       
-      # page.should have_content("THANKS!")
-      # save_and_open_page
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end
