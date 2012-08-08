@@ -5,7 +5,8 @@
 	  <%= f.error_notification %>
 
 	  <div class="inputs">
-	    <%= f.input :email, :required => true, :input_html => { :class => "field-message" } %>
+	  	<p>Please enter the email associated with your account.</p>
+	    <%= f.input :email, :required => false, :input_html=> { :class=>"field-name", :placeholder=>"Email"} , :label=> false %>
 	  </div>
 
 	  <div class="actions">

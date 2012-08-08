@@ -10,7 +10,7 @@
 #     - <Heroku config:var name>: <Heroku config:var value>
 #
 production: 
-  app: vast-stream-4220
+  app: ga-notifier 
   stack: cedar
   tag: production/*
   config:

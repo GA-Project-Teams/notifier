@@ -63,20 +63,6 @@ module Notifier
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-    # config.action_mailer.smtp_settings = {
-    #   :address => "localhost",
-    #   :port => 25,
-    #   :domain => "whatever.com",
-    # }
-    config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
-      port: 587,
-      domain: "test.com",
-      authentication: "plain",
-      enable_starttls_auto: true,
-      user_name: "ga.notifier@gmail.com",
-      password: "dontchange_GAnotifier1"
-    }
-  end
+    config.action_mailer.default_url_options = { :host => 'ga-notifier.herokuapp.com' }
+  end    
 end
