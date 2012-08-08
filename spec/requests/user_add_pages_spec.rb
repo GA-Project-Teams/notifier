@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe "UserAddPages" do
   
-  describe "can visit user add page", :js => true do
+  describe "can visit user add page" do
     # include Devise::TestHelpers
     # let(:user) { FactoryGirl.create(:user) }
     
     before do
-      @user = Factory.create(:user)
+      @user = Factory.create(:user) 
       visit users_path
       
       fill_in 'user_email', :with => @user.email
@@ -18,20 +18,20 @@ describe "UserAddPages" do
       
     end
     
-    it "and add new user" do
-      visit '/users/add'
+    it "and add new user", :js => true do
+      visit '/add'
       # click_button 'ADD CONTACT'
       
-      fill_in '_users_first_name', :with => @user.first_name
-      fill_in '_users_last_name', :with => @user.last_name
-      fill_in '_users_email', :with => @user.email
-      fill_in '_users_company_name', :with => @user.company_name
+      fill_in 'user_first_name', :with => @user.first_name
+      fill_in 'user_last_name', :with => @user.last_name
+      fill_in 'user_email', :with => @user.email
+      fill_in 'user_company_name', :with => @user.company_name
       # fill_in '_users_phone_name', :with => @user.phone_number
       # select 'users_preference', :with => @user.preference
       
-      expect { click_button "ADD CONTACT" }.to raise_error(
-        ActiveRecord::RecordInvalid
-      )
+      expect { 
+        click_button "ADD CONTACT" 
+        }.to change { User.count }.by(1)
       
       # page.current_path.should == edit_users_path
       

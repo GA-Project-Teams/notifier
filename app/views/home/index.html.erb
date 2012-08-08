@@ -1,6 +1,6 @@
 <section id="content-area" class="box">
 	<p>Greetings Stranger, I don't know you please try to Login </p>
 	<% @users.each do |user| %>
-  email:  <%= link_to user.email %> <br />
+  email:  <%= link_to user.email, edit_user_path(user) %> <br />
   <% end %>
 </section>

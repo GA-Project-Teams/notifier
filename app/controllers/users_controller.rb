@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     # generated_password = Devise.friendly_token.first(6)
     # @user = User.new(params[:user], :password => generated_password, :password_confimration => generated_password)
     @user = User.new(params[:user])
-    @user.skip_confirmation!
+    # @user.skip_confirmation!
     if @user.save
       redirect_to(@user, :notice => 'User was successfully created.')
     else
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    # @user = User.find(params[:id]) 
+    @user = User.find(params[:id]) 
   end
   
   def update
