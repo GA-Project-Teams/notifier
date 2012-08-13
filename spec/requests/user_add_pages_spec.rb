@@ -19,6 +19,7 @@ describe "UserAddPages" do
     end
     
     it "and add new user" do
+      ActionMailer::Base.deliveries = []
       visit new_user_path
       # click_button 'ADD CONTACT'
       # test_user = Factory.create(:user)
@@ -33,6 +34,10 @@ describe "UserAddPages" do
       expect { 
         click_button "ADD CONTACT" 
         }.to change { User.count }.by(1)
+      
+      
+      ActionMailer::Base.deliveries.should_not be_empty
+        
       # save_and_open_page
       # page.current_path.should == edit_users_path
       

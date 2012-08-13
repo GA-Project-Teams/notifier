@@ -20,7 +20,9 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     # @user.skip_confirmation!
     @user.enable_strict_validation = true
+    @user.reset_password_token = User.reset_password_token
     if @user.save
+      UserMailer.signup_confirmation(@user).deliver
       redirect_to(@user, :notice => 'User was successfully created.')
     else
       render action: 'edit'
