@@ -28,6 +28,7 @@ describe "UserEditPages" do
       #       page.should have_content(@user.phone_number)
       #       page.should have_content(@user.preference)
       #       
+      ActionMailer::Base.deliveries = []
       fill_in 'user_first_name', :with => Faker::Name.first_name
       fill_in 'user_last_name', :with => Faker::Name.last_name
       fill_in 'user_email', :with => Faker::Internet.email
@@ -35,6 +36,7 @@ describe "UserEditPages" do
       fill_in 'user_phone_number', :with => Faker::PhoneNumber.phone_number
       
       click_button "UPDATE"
+      ActionMailer::Base.deliveries.should_not be_empty
 
       page.current_path.should == user_path(@user)
       

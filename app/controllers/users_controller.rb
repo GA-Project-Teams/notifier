@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id]) 
     if @user.update_attributes(params[:user])
+      UserMailer.edit_contact_info(@user).deliver
       redirect_to(@user, :notice => 'Success! Your contact will be notified that their contact information has been updated.')
     else
       render action: 'edit'
