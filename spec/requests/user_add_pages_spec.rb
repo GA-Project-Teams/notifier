@@ -4,7 +4,6 @@ describe "UserAddPages" do
   
   describe "can visit user add page" do
     # include Devise::TestHelpers
-    # let(:user) { FactoryGirl.create(:user) }
     
     before do
       user = Factory.create(:user) 
@@ -15,16 +14,12 @@ describe "UserAddPages" do
       click_button "Sign in"
       
       page.should have_content(user.email)
-      
+      click_link "ADD CONTACT"
     end
     
     it "and add new user" do
-      click_link "ADD CONTACT"
       ActionMailer::Base.deliveries = []
-      visit new_user_path
-      # click_button 'ADD CONTACT'
-      # test_user = Factory.create(:user)
-      
+            
       fill_in 'user_first_name', :with => Faker::Name.first_name
       fill_in 'user_last_name', :with => Faker::Name.last_name
       fill_in 'user_email', :with => Faker::Internet.email
@@ -36,23 +31,12 @@ describe "UserAddPages" do
         click_button "ADD CONTACT" 
         }.to change { User.count }.by(1)
       
-      
       ActionMailer::Base.deliveries.should_not be_empty
-        
-      # save_and_open_page
-      # page.current_path.should == edit_users_path
-      
-      # page.should have_content(user.first_name)
-      #       page.should have_content(user.last_name)
-      #       page.should have_content(user.company_name)
-      #       page.should have_content(user.email)
-      #       page.should have_content(user.phone_number)
-      # page.should have_content(user.preference)
        
     end
     
-    xit "and cancel adding users" do
-      click_link "CANCEL"
+    it "and cancel adding users" do
+      click_button "OR CANCEL"
       page.current_path.should == root_path
     end
   end

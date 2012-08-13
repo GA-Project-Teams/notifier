@@ -4,4 +4,6 @@
 <% if flash[:error] %>
   <p class="error"><%= flash[:error] %></p>
 <% end %>
-email:  <%= link_to @user.email, edit_user_path(@user) %> <br />
+
+<%= button_to "VIEW CONTACTS", users_path %>
+<%= button_to "SEND NOTIFICATION", root_path %>

@@ -10,7 +10,7 @@ describe UserMailer do
     it "renders the headers" do
       mail.subject.should eq("Welcome!")
       mail.to.should eq([user.email])
-      mail.from.should eq(["ga-notifier@example.com"])
+      mail.from.should eq(["notifier@ga-notifier.herokuapp.com"])
     end
 
     it "renders the body" do
