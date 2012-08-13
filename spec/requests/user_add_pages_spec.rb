@@ -8,7 +8,7 @@ describe "UserAddPages" do
     
     before do
       user = Factory.create(:user) 
-      visit users_path
+      visit root_path
       
       fill_in 'user_email', :with => user.email
       fill_in 'user_password', :with => user.password
@@ -19,6 +19,7 @@ describe "UserAddPages" do
     end
     
     it "and add new user" do
+      click_link "ADD CONTACT"
       ActionMailer::Base.deliveries = []
       visit new_user_path
       # click_button 'ADD CONTACT'
@@ -28,7 +29,7 @@ describe "UserAddPages" do
       fill_in 'user_last_name', :with => Faker::Name.last_name
       fill_in 'user_email', :with => Faker::Internet.email
       fill_in 'user_company_name', :with => Faker::Company.name
-      # fill_in '_users_phone_name', :with => @user.phone_number
+      fill_in 'user_phone_number', :with => Faker::PhoneNumber.phone_number
       # select 'users_preference', :with => @user.preference
       
       expect { 

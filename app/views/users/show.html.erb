@@ -1,5 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<% @users.each do |user| %>
-Email: <%= user.email %> <br />
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
 <% end %>
+<% if flash[:error] %>
+  <p class="error"><%= flash[:error] %></p>
+<% end %>
+email:  <%= link_to @user.email, edit_user_path(@user) %> <br />

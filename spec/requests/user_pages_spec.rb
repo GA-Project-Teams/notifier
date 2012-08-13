@@ -3,11 +3,12 @@ require 'spec_helper'
 describe "UserPages" do
   describe "should visit login page" do
     before do
-      visit users_path
+      visit root_path
     end
     let(:user) { FactoryGirl.create(:user) }
     
     it "and login successfully" do
+      page.current_path.should == new_user_session_path
       
       # expect { user2.save }.to change { User.count }.by(1)
       
@@ -66,9 +67,8 @@ describe "UserPages" do
      
       click_link "Logout"
       
-      page.current_path.should == root_path
-      page.should have_content("Greetings Stranger, I don't know you please try to Login")
-      
+      page.current_path.should == new_user_session_path
+
     end
     
     it "and reset password" do

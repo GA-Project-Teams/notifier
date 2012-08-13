@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   # before_filter :insert_password, :only => [:new, :create]
   def index
-    
+    @users = User.all
   end
 
   def show
-    @users = User.all
+    @user = User.find(params[:id]) 
   end
   
   def new
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user.reset_password_sent_at = Time.now
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
-      redirect_to(@user, :notice => 'User was successfully created.')
+      redirect_to(@user, :notice => 'Success! Your contact has been added and an email has been sent to the address provided.')
     else
       render action: 'edit'
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id]) 
     if @user.update_attributes(params[:user])
-      redirect_to(@user, :notice => 'User was updated successfully.')
+      redirect_to(@user, :notice => 'Success! Your contact will be notified that their contact information has been updated.')
     else
       render action: 'edit'
     end
