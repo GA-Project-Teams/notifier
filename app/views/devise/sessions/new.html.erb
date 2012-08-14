@@ -1,19 +1,21 @@
-<section id="content-area" class="center">
-	<h2>Sign in</h2>
+<div class="span9 offset3">
+	<section id="content-area" class="center">
+		<h2>Sign in</h2>
 
-	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-	  <div class="inputs">
-	  	<p>Please enter your email and password below.</p>
-	  	<div class='<%= "field_with_errors" if flash[:alert].present? %>'>
-		    <%= f.input :email, :required => false, :autofocus => true, :input_html=> { :class=>"field-name span4", :placeholder=>"Email"}, :label => false %>
-		    <%= f.input :password, :required => false, :input_html=> { :class=>"field-name span4", :placeholder=>"Password"}, :label => false %>
-		    <span class="error"><%= alert %></span>
-		    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-	  	</div>
-		</div>
-	  <div class="actions">
-	    <%= f.button :submit, "Sign in", :class=>"red-button"%>
-	  </div>
-	<% end %>   
-	<%= render :partial => "devise/shared/links" %>
-</section>
+		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		  <div class="inputs">
+		  	<p>Please enter your email and password below.</p>
+		  	<div class='<%= "field_with_errors" if flash[:alert].present? %>'>
+			    <%= f.input :email, :required => false, :autofocus => true, :input_html=> { :class=>"field-name span4", :placeholder=>"Email"}, :label => false %>
+			    <%= f.input :password, :required => false, :input_html=> { :class=>"field-name span4", :placeholder=>"Password"}, :label => false %>
+			    <span class="error"><%= alert %></span>
+			    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+		  	</div>
+			</div>
+		  <div class="actions">
+		    <%= f.button :submit, "Sign in", :class=>"red-button"%>
+		  </div>
+		<% end %>   
+		<%= render :partial => "devise/shared/links" %>
+	</section>
+</div>
