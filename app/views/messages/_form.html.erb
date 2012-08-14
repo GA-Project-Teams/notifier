@@ -1,0 +1,10 @@
+<%= simple_form_for(@message) do |f| %>
+  <div class="inputs">
+    
+    <%= f.input :content, :required => true %>
+    
+  </div>
+  <div class="actions">
+    <%= f.button :submit, "SEND NOTIFICATION" %>
+  </div>
+<% end %>
