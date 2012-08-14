@@ -3,11 +3,12 @@ require 'spec_helper'
 describe "UserPages" do
   describe "should visit login page" do
     before do
-      visit users_path
+      visit root_path
     end
     let(:user) { FactoryGirl.create(:user) }
     
     it "and login successfully" do
+      page.current_path.should == new_user_session_path
       
       # expect { user2.save }.to change { User.count }.by(1)
       
@@ -37,15 +38,15 @@ describe "UserPages" do
       # page.should have_content("You have signed in successfully.")
       page.should have_content(user.email)
       
-      click_link "Edit Profile"
+      click_link "HELLO, #{user.first_name}"
       
       fill_in 'user_email', :with => user.email
       fill_in 'user_company_name', :with => user.company_name
       fill_in 'user_first_name', :with => user.first_name
       fill_in 'user_last_name', :with => user.last_name
-      fill_in 'user_password', :with => "new_password"
-      fill_in 'user_password_confirmation', :with => "new_password"
-      fill_in 'user_current_password', :with => user.password
+      # fill_in 'user_password', :with => "new_password"
+      # fill_in 'user_password_confirmation', :with => "new_password"
+      # fill_in 'user_current_password', :with => user.password
       
       # expect { user.password }.to change 
       
@@ -64,11 +65,10 @@ describe "UserPages" do
       # page.should have_content("You have signed in successfully.")
       page.should have_content(user.email)
      
-      click_link "Logout"
+      click_link "Not you?"
       
-      page.current_path.should == root_path
-      page.should have_content("Greetings Stranger, I don't know you please try to Login")
-      
+      page.current_path.should == new_user_session_path
+
     end
     
     it "and reset password" do
