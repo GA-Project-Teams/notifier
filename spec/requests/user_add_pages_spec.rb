@@ -26,7 +26,7 @@ describe "UserAddPages" do
       fill_in 'user_company_name', :with => Faker::Company.name
       fill_in 'user_phone_number', :with => Faker::PhoneNumber.phone_number
       # select 'users_preference', :with => @user.preference
-      
+     
       expect { 
           click_button "ADD CONTACT" 
         }.to change { User.count }.by(1)
