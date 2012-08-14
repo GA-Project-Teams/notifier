@@ -1,3 +1,5 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
-
+<section id="content-area" class="box">
+	<% @users.each do |user| %>
+  email:  <%= link_to user.email, edit_user_path(user) %> <br />
+  <% end %>
+</section>
