@@ -11,11 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802003419) do
+ActiveRecord::Schema.define(:version => 20120814032351) do
+
+  create_table "messages", :force => true do |t|
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.text     "content"
+    t.integer  "to_user_id"
+    t.integer  "from_user_id"
+    t.integer  "message_type_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "encrypted_password",     :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
