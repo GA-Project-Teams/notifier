@@ -25,6 +25,7 @@ gem 'compass_twitter_bootstrap'
 gem 'compass-rails'
 gem 'jquery-rails'
 gem 'rails_config'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'heroku_san'
