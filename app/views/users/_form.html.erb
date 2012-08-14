@@ -15,13 +15,14 @@
     <div class="row">
       <%= f.input :email, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
       <%= f.input :company_name, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
+      <%= f.input :phone_number, :required => false, :autofocus => true %>
       <%= f.input :preference, :required => false, :autofocus => true, :as => :select, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1', :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=>"field-name" } %>
       <% if current_page?( :action => 'new' ) %>
     </div>
 
     <div class="row">
-      <%= f.input :password, :readonly => true, :wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => hidden %>
-      <%= f.input :password_confirmation, :readonly => true,:wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => hidden %>
+      <%= f.input :password, :readonly => true, :wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
+      <%= f.input :password_confirmation, :readonly => true,:wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
     </div>
   </div>
   <div class="row">
