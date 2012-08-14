@@ -3,36 +3,35 @@
   <div class='inputs'>
     <% generated_password = Devise.friendly_token.first(10) %>
     <% current_password = @user.password %>
-    <div class='name'>
-      <%= f.input :first_name, :required => true %>
-      <%= f.input :last_name, :required => true %>
+    <div class="row">
+      <%= f.input :first_name, :required => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
+      <%= f.input :last_name, :required => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=>"field-name" } %>
     </div>
-    <div class='company'>
-      <%= f.input :company_name, :required => true, :autofocus => true %>
-    </div>
-    <div class='contact'>
-      <%= f.input :email, :required => true, :autofocus => true %>
-      <%= f.input :phone_number, :required => false, :autofocus => true %>
-      <%= f.input :preference, :required => false, :autofocus => true, :as => :select, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1' %>
-    </div>
-    <% if current_page?( :action => 'new' ) %>
-    
-    <%= f.input :password, :readonly => true, :input_html => { :value => generated_password }, :as => :hidden %>
-    <%= f.input :password_confirmation, :readonly => true, :input_html => { :value => generated_password }, :as => :hidden %>
-    
-  </div>
 
-  <div class='actions'>
-    <%= f.button :submit, "ADD CONTACT", :class => "red-button" %>
-  <% else %>
-  
-  <div class='actions'>
-    <%= f.button :submit, "UPDATE", :class => "red-button" %>
-  <% end %>
-  
-    
+    <div class="row">
+      <%= f.input :company_name, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span12" }, :input_html=> { :class=>"field-name span6" } %>
+    </div>
+
+    <div class="row">
+      <%= f.input :email, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
+      <%= f.input :phone_number, :required => false, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
+      <%= f.input :preference, :required => false, :autofocus => true, :as => :select, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1', :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=>"field-name" } %>
+      <% if current_page?( :action => 'new' ) %>
+    </div>
+
+    <div class="row">
+      <%= f.input :password, :readonly => true, :wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
+      <%= f.input :password_confirmation, :readonly => true,:wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
+    </div>
   </div>
-  
+  <div class="row">
+    <div class='actions span3'>
+    <%= f.button :submit, "ADD CONTACT",:wrapper_html=> { :class=> "span3" }, :class => "red-button" %>
+    <% else %>
+    <div class='actions span3'>
+      <%= f.button :submit, "UPDATE", :class => "red-button" %>
+    <% end %>
+  </div>
 <% end %>
 
 <%= button_to "OR CANCEL", '/', :class => "red-button" %>
