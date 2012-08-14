@@ -14,8 +14,7 @@
 
     <div class="row">
       <%= f.input :email, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
-      <%= f.input :company_name, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
-      <%= f.input :phone_number, :required => false, :autofocus => true %>
+      <%= f.input :phone_number, :required => false, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
       <%= f.input :preference, :required => false, :autofocus => true, :as => :select, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1', :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=>"field-name" } %>
       <% if current_page?( :action => 'new' ) %>
     </div>
