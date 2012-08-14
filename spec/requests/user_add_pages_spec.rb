@@ -28,7 +28,7 @@ describe "UserAddPages" do
       # select 'users_preference', :with => @user.preference
       
       expect { 
-        click_button "ADD CONTACT" 
+          click_button "ADD CONTACT" 
         }.to change { User.count }.by(1)
       
       ActionMailer::Base.deliveries.should_not be_empty
