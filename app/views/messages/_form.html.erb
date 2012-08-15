@@ -9,7 +9,7 @@
     <%= f.input :to_user_id, :required => true %>
     <%= f.input :content, :required => true %>
     <%= f.input :from_user_id, :required => true, :as => :hidden, :input_html => {:value => current_user.id} %>
-    <%= f.input :message_type_id, :required => true, :autofocus => false, :as => :check_boxes, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1' %>
+    <%= f.input :message_type_id, :required => true, :autofocus => false, :as => :radio_buttons, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1' %>
   </div>
   <div class="actions">
     <%= f.button :submit, "SEND NOTIFICATION" %>

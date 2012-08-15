@@ -8,12 +8,12 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     @to_user = User.find(@message.to_user_id)
     if @message.save
-      if (@to_user.preference == 3)
+      if (@message.message_type_id == 3)
         UserMailer.notify_user(@to_user, @message).deliver
         send_text_message(@to_user, @message)
-      elsif (@to_user.preference == 2)
+      elsif (@message.message_type_id == 2)
         UserMailer.notify_user(@to_user, @message).deliver
-      elsif (@to_user.preference == 1)
+      elsif (@message.message_type_id == 1)
         send_text_message(@to_user, @message)
       end
       redirect_to(new_message_path, :notice => 'Notification sent!')
