@@ -1,8 +1,25 @@
 <section id="content-area" class="box">
-	<% @users.each do |user| %>
-  email:  <%= link_to user.email, edit_user_path(user) %> <br />
-  <% end %>
+  <table id="users">
+    <tr>
+      <th>NAME</th>
+      <th>COMPANY</th>
+      <th>EMAIL</th>
+      <th>NUMBER</th>
+    </tr>
+  	<% @users.each do |user| %>
+  	<tr>
+  	  <td><%= "#{user.first_name} #{user.last_name}" %></td>
+  	  <td><%= user.company_name %></td>
+  	  <td><%= user.email %></td>
+  	  <td><%= user.phone_number %></td>
+  	  <td>
+    	  <%= link_to "NOTIFY", new_message_path %>
+    	  <%= link_to "EDIT", edit_user_path(user) %>
+  	    <%= link_to "DELETE", user, method: :delete, data: { confirm: 'Are you sure?'} %>
+      
+  	  </td>
+    </tr>  
+    <% end %>
+  </table>
 </section>
-<section>
-  <%= link_to "Add Contact", new_user_path %>
-</section>
+

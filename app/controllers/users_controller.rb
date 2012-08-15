@@ -7,6 +7,8 @@ class UsersController < ApplicationController
       format.html
       format.json { render json: @users }
     end
+    
+    
   end
 
   def show
@@ -46,6 +48,13 @@ class UsersController < ApplicationController
       redirect_to(@user, :notice => 'CONTACT UPDATED Success! Your contact will be notified that their contact information has been updated.')
     else
       render action: 'edit'
+    end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to users_path
     end
   end
   
