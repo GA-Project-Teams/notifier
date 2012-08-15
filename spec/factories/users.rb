@@ -8,8 +8,8 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     company_name { Faker::Company.name }
     phone_number { Faker::PhoneNumber.phone_number }
-    preference { rand(2) }
-    password "password12345"
-    password_confirmation "password12345"
+    preference { 1 + rand(3) }
+    password "test12345"
+    password_confirmation "test12345"
   end
 end

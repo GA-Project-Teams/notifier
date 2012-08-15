@@ -51,6 +51,7 @@ group :test do
 end
 
 gem 'devise_invitable'
+gem 'twilio-ruby'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
