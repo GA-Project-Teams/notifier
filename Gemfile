@@ -48,6 +48,8 @@ end
 
 group :test do
   gem 'email_spec'
+  gem 'vcr'
+  gem 'fakeweb'
 end
 
 gem 'devise_invitable'
