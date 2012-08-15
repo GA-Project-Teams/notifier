@@ -36,7 +36,7 @@ describe "UserEditPages" do
     end
     
     it "and cancel adding users" do
-      click_button "OR CANCEL"
+      click_link "OR CANCEL"
       page.current_path.should == root_path
     end
   end

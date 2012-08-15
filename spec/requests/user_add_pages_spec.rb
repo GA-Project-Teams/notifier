@@ -13,7 +13,7 @@ describe "UserAddPages" do
       fill_in 'user_password', :with => user.password
       click_button "Sign in"
       
-      page.should have_content(user.email)
+      page.should have_content(user.first_name)
       click_link "ADD CONTACT"
     end
     
@@ -36,7 +36,7 @@ describe "UserAddPages" do
     end
     
     it "and cancel adding users" do
-      click_button "OR CANCEL"
+      click_link "OR CANCEL"
       page.current_path.should == root_path
     end
   end

@@ -21,7 +21,7 @@ describe "MessageAddPages" do
     
     ActionMailer.deliveries = []
 
-    fill_in 'message_to_user_id', :with => to_user.first_name 
+    fill_in 'message_to_user_id', :with => to_user.first_name
     fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
     
     click_button 'SEND NOTIFICATION'

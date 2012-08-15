@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_filter :authenticate_user!
   def new
     @message = Message.new
   end
@@ -13,4 +14,5 @@ class MessagesController < ApplicationController
       render action: 'new'
     end
   end
+  
 end
