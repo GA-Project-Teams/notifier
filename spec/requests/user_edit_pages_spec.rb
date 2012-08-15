@@ -29,8 +29,8 @@ describe "UserEditPages" do
 
       page.current_path.should == user_path(@user)
       
-      page.should have_button("VIEW CONTACTS")
-      page.should have_button("SEND NOTIFICATION")
+      page.should have_link("VIEW CONTACTS")
+      page.should have_link("SEND NOTIFICATION")
       
       
     end
