@@ -1,4 +1,15 @@
 <%= simple_form_for(@user) do |f| %>
+ <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this widget from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class='inputs'>
     <% generated_password = Devise.friendly_token.first(10) %>
@@ -14,24 +25,25 @@
 
     <div class="row">
       <%= f.input :email, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
-      <%= f.input :company_name, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
+      <%= f.input :phone_number, :required => false, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
       <%= f.input :preference, :required => false, :autofocus => true, :as => :select, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1', :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=>"field-name" } %>
-      <% if current_page?( :action => 'new' ) %>
+
     </div>
 
     <div class="row">
-      <%= f.input :password, :readonly => true, :wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => hidden %>
-      <%= f.input :password_confirmation, :readonly => true,:wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => hidden %>
+      <%= f.input :password, :readonly => true, :wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
+      <%= f.input :password_confirmation, :readonly => true,:wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
     </div>
   </div>
-  <div class="row">
-    <div class='actions span3'>
-    <%= f.button :submit, "ADD CONTACT",:wrapper_html=> { :class=> "span3" }, :class => "red-button" %>
-    <% else %>
-    <div class='actions span3'>
+    <% if current_page?( :action => 'new' ) %>
+      <div class='actions'>
+      <%= f.button :submit, "ADD CONTACT", :class => "red-button" %>
+    <% else %> 
+      <div class='actions'>
       <%= f.button :submit, "UPDATE", :class => "red-button" %>
     <% end %>
   </div>
 <% end %>
 
-<%= button_to "OR CANCEL", '/', :class => "red-button" %>
+<%= link_to "OR CANCEL", '/', :class => "content-link span3" %>
+

@@ -17,4 +17,6 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :if => :enable_strict_validation
   validates :password_confirmation, :presence => true, :if => :enable_strict_validation
 
+  validates :email, :uniqueness => true
+  
 end
