@@ -1,7 +1,10 @@
 <%= simple_form_for(@message) do |f| %>
   <div class="inputs">
     
+    <%= f.input :to_user_id, :required => true %>
+    <%= f.input :from_user_id, :required => true, :input_html => { :value => current_user.id }, :readonly => true, :as => :hidden %>
     <%= f.input :content, :required => true %>
+    <%= f.input :message_type_id, :as => :check_boxes, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1' %>
     
   </div>
   <div class="actions">
