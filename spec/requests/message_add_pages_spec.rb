@@ -13,20 +13,21 @@ describe "MessageAddPages" do
     
     page.should have_content(user.first_name)
     
-    page.current_path.should == new_message_path
   end
   
   it "can send a message to a user" do
+    # page.current_path.should == new_message_path
     to_user = Factory.create(:user)
     
-    ActionMailer.deliveries = []
+    ActionMailer::Base.deliveries = []
 
-    fill_in 'message_to_user_id', :with => to_user.first_name
+    fill_in 'message_to_user_id', :with => to_user.id
+    fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
     fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
     
     click_button 'SEND NOTIFICATION'
     
-    ActionMailer.deliveries.should_not be_empty
+    ActionMailer::Base.deliveries.should_not be_empty
   end
     
 
