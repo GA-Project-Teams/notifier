@@ -75,6 +75,7 @@ GEM
     factory_girl_rails (1.7.0)
       factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
+    fakeweb (1.3.0)
     ffaker (1.14.0)
     ffi (1.0.11)
     fssm (0.2.9)
@@ -198,6 +199,7 @@ GEM
     uglifier (1.2.6)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
+    vcr (2.2.4)
     warden (1.1.1)
       rack (>= 1.0)
     xpath (0.1.4)
@@ -216,6 +218,7 @@ DEPENDENCIES
   devise_invitable
   email_spec
   factory_girl_rails
+  fakeweb
   ffaker
   growl
   guard-rspec
@@ -234,3 +237,4 @@ DEPENDENCIES
   spork
   twilio-ruby
   uglifier (>= 1.0.3)
+  vcr
