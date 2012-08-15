@@ -1,9 +1,31 @@
-<% if flash[:notice] %>
-  <p class="notice"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:error] %>
-  <p class="error"><%= flash[:error] %></p>
-<% end %>
+<section class="span12">
+	<h2>some text</h2>
+	<% if flash[:notice] %>
+	  <p class="notice"><%= flash[:notice] %></p>
+	<% end %>
+	<% if flash[:error] %>
+	  <p class="error"><%= flash[:error] %></p>
+	<% end %>
 
-<%= button_to "VIEW CONTACTS", users_path %>
-<%= button_to "SEND NOTIFICATION", root_path %>
+	<div class="row">
+		<div class="span6">
+			<p>Success! The information for the following user has been added/updated!</p>
+			<div id="user_information">
+				<p>Name: <%= @user.first_name %> <%= @user.last_name %><br /> 
+				Company Name: <%= @user.company_name %><br />
+				Phone: <%= @user.phone_number %> Email Address: <%= @user.email %><br />
+				Last Update: <%= @user.updated_at %>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="buttons" class="row">
+		<div id="button1" class="span3">
+			<%= button_to "VIEW CONTACTS", users_path, :class => "red-button" %>
+		</div>	
+		<div id="button2" class="span3">
+			<%= button_to "SEND NOTIFICATION", root_path, :class => "red-button" %>
+		</div>
+	</div>
+</section>
