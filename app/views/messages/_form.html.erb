@@ -1,8 +1,16 @@
 <%= simple_form_for(@message) do |f| %>
   <div class="inputs">
     
+  	<div class="input integer required">
+  		<label class="string required" for="message_to_user_name"><abbr title="required">*</abbr> To user</label>
+  		<input class="string required typeahead" data-provide="typeahead" id="message_to_user_name" />
+  	</div>
+
+
+    <%= f.input :to_user_id, :required => true%>
     <%= f.input :content, :required => true %>
-    
+    <%= f.input :from_user_id, :required => true, :as => :hidden, :input_html => {:value => current_user.id} %>
+    <%= f.input :message_type_id, :required => true, :autofocus => false, :as => :check_boxes, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1' %>
   </div>
   <div class="actions">
     <%= f.button :submit, "SEND NOTIFICATION" %>
