@@ -254,7 +254,7 @@
       var that = this
       e.stopPropagation()
       e.preventDefault()
-      setTimeout(function () { that.hide() }, 200)
+      setTimeout(function () { that.hide() }, 250)
     }
 
   , click: function (e) {

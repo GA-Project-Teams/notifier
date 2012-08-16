@@ -23,6 +23,7 @@ $(function() {
         property: 'value',
     	items: 5,
     });
+    
 	$('#message_content').keyup(function(){
 		var messageLength = $(this).val().length;
 		var $counter = $("#counter");
