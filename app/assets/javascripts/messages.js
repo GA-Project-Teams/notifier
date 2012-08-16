@@ -23,5 +23,22 @@ $(function() {
         property: 'value',
     	items: 5,
     });
+	$('#message_content').keyup(function(){
+		var messageLength = $(this).val().length;
+		var $counter = $("#counter");
+		var $submitButton = $('input[type="submit"]');
 
+		$counter.text(160 - messageLength);
+		if(messageLength >= 130 && messageLength < 160) {
+			$counter.css('color', 'yellow');
+			$submitButton.removeAttr('disabled');
+		} else if(messageLength >= 160) {
+			$counter.css('color', 'red');
+			$submitButton.attr('disabled', 'true');
+		} else {
+			$counter.css('color', 'black');
+			$submitButton.removeAttr('disabled');
+		}
+
+	})
 });

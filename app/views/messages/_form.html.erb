@@ -8,6 +8,7 @@
 
     <%= f.input :to_user_id, :required => true %>
     <%= f.input :content, :required => true %>
+    <span id="counter">160</span>
     <%= f.input :from_user_id, :required => true, :as => :hidden, :input_html => {:value => current_user.id} %>
     <%= f.collection_radio_buttons :message_type_id, [['SMS','1'],['Email','2'],['Both','3']], :last, :first %>
   </div>
