@@ -10,14 +10,16 @@ $(function() {
         		for (var i = 0; i < data.length; i++) {
         			var user = data[i];
         			user.name = user.first_name + " " + user.last_name;
-        			return_list.push({value: user.name, id: user.id});
+        			return_list.push({value: user.name, id: user.id, preference: user.preference});
         		}
 
         		return typeahead.process(return_list);		
     		});
         },
         onselect: function(obj) {
-        	console.log('SDFSDFSDF');
+        	console.log(obj);
+        	$('#message_to_user_id').val(obj.id.toString());
+        	$('#message_message_type_id_'+obj.preference).prop('checked', 'checked');
         },
         property: 'value',
     	items: 5,
