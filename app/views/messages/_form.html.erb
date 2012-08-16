@@ -1,4 +1,4 @@
-<%= simple_form_for(@message) do |f| %>
+<%= simple_form_for(@message, :html => {:class => 'form-vertical' }) do |f| %>
   <div class="inputs">
   	<div class="input integer required">
   		<label class="string required" for="message_to_user_name"><abbr title="required"></abbr>Who would you like to notify?</label>
@@ -9,7 +9,7 @@
     <%= f.input :to_user_id, :required => true %>
     <%= f.input :content, :required => true %>
     <%= f.input :from_user_id, :required => true, :as => :hidden, :input_html => {:value => current_user.id} %>
-    <%= f.input :message_type_id, :required => true, :autofocus => false, :as => :radio_buttons, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1' %>
+    <%= f.collection_radio_buttons :message_type_id, [['SMS','1'],['Email','2'],['Both','3']], :last, :first %>
   </div>
   <div class="actions">
     <%= f.button :submit, "SEND NOTIFICATION" %>
