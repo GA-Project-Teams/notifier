@@ -37,7 +37,9 @@ a { text-decoration: none; text-transform: uppercase; color: #999; }
 /* 0 - header *******************************************/
 header { color: #FFF; }
 header	a { text-decoration: none; text-transform: uppercase; color: #999; margin-left: 5px; font-size: 15px; font-weight: bold;}
-a:hover{ color: $font-hover-color; }
+a:hover { color: $font-hover-color; text-decoration: none; }
+.not_you { font-size: 10px; } 
+
 
 /* 0 - content *******************************************/
 #container { background: #ffffff; }
@@ -68,6 +70,9 @@ span.error { color: #F03; display: block;	}
 .field_with_errors input { border: solid #F03 2px;}
 
 #user_preference { height: 43px; }
+
+/* 0 - NOTIFIY FORM *******************************************/
+span.radio { width: 100px; }
 
 /* 0 - footer *******************************************/
 footer {
