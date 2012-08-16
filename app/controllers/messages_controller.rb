@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!
   def new
     @message = Message.new
+    # @to_user_id = User.find(params[:to_user_id])
+    # @message_type_id = params[:message_type_id]
   end
   
   def create
@@ -22,12 +24,18 @@ class MessagesController < ApplicationController
     end
   end
   
+  def notify
+    @message = Message.new
+    @user = User.find(params[:id])
+    # @message_type_id = params[:message_type_id]
+  end
+  
   private
   
   def send_text_message(to_user, message)
-    twilio_sid = 'AC7b40b24acaa4eaf33f11de10105880a6'
-    twilio_token = '63c6c31c3bb4b9b2f419fdeedff535d3'
-    twilio_phone_number = '8609866818'
+    twilio_sid = ENV['TWILIO_SID']
+    twilio_token = ENV['TWILIO_TOKEN']
+    twilio_phone_number = ENV['TWILIO_PHONE_NUMBER']
     
     @twilio_client = Twilio::REST::Client.new(twilio_sid, twilio_token)
     

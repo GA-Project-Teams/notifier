@@ -36,7 +36,7 @@ describe "UserManagementPages" do
       
       it "and notify user" do
         click_link "NOTIFY"
-        page.current_path.should == new_message_path
+        page.current_path.should == notify_message_path(@user)
       end
       
       it "and edit user" do

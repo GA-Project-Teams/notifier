@@ -20,7 +20,7 @@ describe "MessageAddPages" do
     it "when email is selected" do
       to_user = Factory.create(:user)
 
-      fill_in 'message_to_user_id', :with => to_user.id
+      # fill_in 'message_to_user_id', :with => to_user.id
       fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
       fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
  
@@ -37,7 +37,7 @@ describe "MessageAddPages" do
       VCR.use_cassette "messages/phone_number" do
         to_user = Factory.create(:user)
 
-        fill_in 'message_to_user_id', :with => to_user.id
+        # fill_in 'message_to_user_id', :with => to_user.id
         fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
         fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
  
@@ -52,7 +52,7 @@ describe "MessageAddPages" do
       VCR.use_cassette "messages/phone_number" do
         to_user = Factory.create(:user)
 
-        fill_in 'message_to_user_id', :with => to_user.id
+        # fill_in 'message_to_user_id', :with => to_user.id
         fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
         fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
  

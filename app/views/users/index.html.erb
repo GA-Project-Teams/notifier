@@ -13,7 +13,7 @@
   	  <td><%= user.email %></td>
   	  <td><%= user.phone_number %></td>
   	  <td>
-    	  <%= link_to "NOTIFY", new_message_path %>
+    	  <%= link_to "NOTIFY", notify_message_path(user) %>
     	  <%= link_to "EDIT", edit_user_path(user) %>
   	    <%= link_to "DELETE", user, method: :delete, data: { confirm: 'Are you sure?'} %>
       
