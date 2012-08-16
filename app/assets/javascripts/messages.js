@@ -17,7 +17,6 @@ $(function() {
     		});
         },
         onselect: function(obj) {
-        	console.log(obj);
         	$('#message_to_user_id').val(obj.id.toString());
         	$('#message_message_type_id_'+obj.preference).prop('checked', 'checked');
         },
