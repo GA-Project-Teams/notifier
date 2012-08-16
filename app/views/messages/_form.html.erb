@@ -1,14 +1,15 @@
-<%= simple_form_for(@message) do |f| %>
+<%= simple_form_for(@message, :html => {:class => 'form-vertical' }) do |f| %>
   <div class="inputs">
   	<div class="input integer required">
-  		<label class="string required " for="message_to_user_name" ><abbr title="required"></abbr>Who would you like to notify? <span id="count">160</span></label>
+  		<label class="string required " for="message_to_user_name" ><abbr title="required"></abbr>Who would you like to notify? <span id="counter">160</span></label>
   		<input class="string required typeahead field-name span6" data-provide="typeahead" id="message_to_user_name" placeholder="start typing name"/>
   	</div>
+
     <%= f.input :to_user_id, :required => true, :as=> :hidden %>
     <%= f.input :content, :required => true, :input_html=> { :class=> "field-message span6", :placeholder=> "your message goes here, keep it short, 140 characters short..." } %>
-    <%= f.input :from_user_id, :required => true, :as => :hidden, :input_html => { :value => current_user.id }%>
-    <%= f.input :message_type_id, :required => true, :autofocus => false, :as => :radio_buttons, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1' %>
-  </div>2
+    <%= f.input :from_user_id, :required => true, :as => :hidden, :input_html => {:value => current_user.id} %>
+    <%= f.collection_radio_buttons :message_type_id, [['SMS','1'],['Email','2'],['Both','3']], :last, :first %>
+  </div>
   <div class="actions">
     <%= f.button :submit, "SEND NOTIFICATION", :class => "red-button" %>
   </div>
