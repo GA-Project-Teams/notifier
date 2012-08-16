@@ -1,12 +1,18 @@
 <header class="container-fluid">
   <div class="row-fluid">
-    <h1 class="span8">General Assembly</h1>
+    <h1 class="span4">General Assembly</h1>
+    	<ul class="span4">
+    		<li><%= link_to "NOTIFY", root_path %></li>
+        <li><%= link_to "VIEW CONTACTS", users_path %></li>
+        <li><%= link_to "ADD CONTACT", new_user_path %></li>
+    	</ul>
+      <div class="span4">
       <% if user_signed_in? %>
         <%= link_to "HELLO, #{current_user.first_name}", edit_user_path(current_user) %>
-        <%= link_to "Not you?", destroy_user_session_path, method: :delete %>
-        
+        <%= link_to "Not you?", destroy_user_session_path, method: :delete, :class=>"not_you" %>
       <% else %>
-        <%= link_to "Login", new_user_session_path, :class=>'span2' %>
+        <%= link_to "Login", new_user_session_path, :class=>'span4' %>
       <% end %>
+    </div>
   </div>
 </header>

@@ -17,7 +17,7 @@ describe "UserPages" do
       click_button "Sign in"
       
       # page.should have_content("You have signed in successfully.")
-      page.should have_content(user.email)
+      page.should have_content(user.first_name)
     end
   
     it "and login with a bad password and not login successfully" do
@@ -36,7 +36,7 @@ describe "UserPages" do
       click_button "Sign in"
       
       # page.should have_content("You have signed in successfully.")
-      page.should have_content(user.email)
+      page.should have_content(user.first_name)
       
       click_link "HELLO, #{user.first_name}"
       
@@ -63,7 +63,7 @@ describe "UserPages" do
       click_button "Sign in"
       
       # page.should have_content("You have signed in successfully.")
-      page.should have_content(user.email)
+      page.should have_content(user.first_name)
      
       click_link "Not you?"
       

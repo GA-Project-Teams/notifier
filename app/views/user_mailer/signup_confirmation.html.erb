@@ -1,6 +1,20 @@
 <p>Welcome <%= @resource.first_name %>!</p>
 
-<p>Please change your password</p>
+<p>We have added your contact information to our notifier. When you get mail or a guest arrives for you, our team will let you know at the contact information we have stored for you. Currently, that is:</p>
 
-<p><%= link_to 'Change my password', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token) %></p>
+<p>Name: <%= @resource.first_name %> <%= @resource.last_name %></p>
+<% if @resource.company_name %>
+<p>Company: <%= @resource.company_name %></p>
+<% end %>
+<p>Email: <%= @resource.email %></p>
+<% if @resource.phone_number %>
+<p>Telephone: <%= @resource.phone_number %><p>
+<% end %>
 
+<p><%= link_to 'Change my password here', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token) %></p>
+
+<p>Please check that this information is up to date. If it is not, we invite you to update it and other notification preferences <%= link_to 'here', edit_password_url(@resource) %>.</p>
+
+Thanks!
+
+<p>The XTeam</p>

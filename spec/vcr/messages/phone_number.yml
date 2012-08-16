@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://AC7b40b24acaa4eaf33f11de10105880a6:63c6c31c3bb4b9b2f419fdeedff535d3@api.twilio.com/2010-04-01/Accounts/AC7b40b24acaa4eaf33f11de10105880a6/SMS/Messages.json
+    body:
+      encoding: US-ASCII
+      string: From=%2b18609866818&To=1234567890&Body=Autem%20est%20voluptate%20cum%20iste%20non%20voluptatem%20eaque.%20Quis%20vel%20ut%20consequatur%20sequi.%20Exercitationem%20est%20nobis%20aperiam%20perspiciatis%20officiis.
+    headers:
+      accept:
+      - application/json
+      accept-charset:
+      - utf-8
+      user-agent:
+      - twilio-ruby/3.8.0
+      authorization:
+      - Basic QUM3YjQwYjI0YWNhYTRlYWYzM2YxMWRlMTAxMDU4ODBhNjo2M2M2YzMxYzNiYjRiOWIyZjQxOWZkZWVkZmY1MzVkMw==
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      server:
+      - nginx
+      date:
+      - Wed, 15 Aug 2012 19:41:57 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '607'
+      connection:
+      - close
+      etag:
+      - ''
+    body:
+      encoding: US-ASCII
+      string: ! '{"sid":"SM42069e2bf3803f389ab0aa34b1509447","date_created":"Wed,
+        15 Aug 2012 19:41:57 +0000","date_updated":"Wed, 15 Aug 2012 19:41:57 +0000","date_sent":null,"account_sid":"AC7b40b24acaa4eaf33f11de10105880a6","to":"+18608333149","from":"+18609866818","body":"Autem
+        est voluptate cum iste non voluptatem eaque. Quis vel ut consequatur sequi.
+        Exercitationem est nobis aperiam perspiciatis officiis.","status":"queued","direction":"outbound-api","api_version":"2010-04-01","price":null,"uri":"\/2010-04-01\/Accounts\/AC7b40b24acaa4eaf33f11de10105880a6\/SMS\/Messages\/SM42069e2bf3803f389ab0aa34b1509447.json"}'
+    http_version: '1.1'
+  recorded_at: Wed, 15 Aug 2012 19:41:57 GMT
+recorded_with: VCR 2.2.4

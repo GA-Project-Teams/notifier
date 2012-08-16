@@ -13,7 +13,7 @@ describe "UserAddPages" do
       fill_in 'user_password', :with => user.password
       click_button "Sign in"
       
-      page.should have_content(user.email)
+      page.should have_content(user.first_name)
       click_link "ADD CONTACT"
     end
     

@@ -24,4 +24,14 @@ class UserMailer < ActionMailer::Base
       format.html { render "user_mailer/edit_contact_info" }
     end
   end
+  
+  def notify_user(to_user, message)
+    # to_user = User.find(message.to_user_id)
+    @resource = to_user
+    @body = message.content
+    
+    mail(to: @resource.email, subject: "You've received a new notification", :content_type => "text/html") do |format|
+      format.html { render "user_mailer/notify_user" }
+    end
+  end
 end

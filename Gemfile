@@ -48,9 +48,12 @@ end
 
 group :test do
   gem 'email_spec'
+  gem 'vcr'
+  gem 'fakeweb'
 end
 
 gem 'devise_invitable'
+gem 'twilio-ruby'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

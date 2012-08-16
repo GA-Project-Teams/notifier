@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   # before_filter :insert_password, :only => [:new, :create]
   def index
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @users }
+    end
   end
 
   def show
@@ -37,7 +41,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id]) 
     if @user.update_attributes(params[:user])
-      UserMailer.edit_contact_info(@user).deliver
+      # UserMailer.edit_contact_info(@user).deliver
       sign_in @user, :bypass => true
       redirect_to(@user, :notice => 'CONTACT UPDATED Success! Your contact will be notified that their contact information has been updated.')
     else

@@ -2,8 +2,10 @@ Notifier::Application.routes.draw do
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
-  root :to => "home#index"
+  root :to => "messages#new"
+
   resources :users
+  resources :messages
 end
 #== Route Map
 # Generated on 15 Aug 2012 15:21
