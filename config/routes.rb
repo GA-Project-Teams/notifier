@@ -20,6 +20,7 @@ Notifier::Application.routes.draw do
     end
   end  
 
+
 end
 #== Route Map
 # Generated on 15 Aug 2012 15:21

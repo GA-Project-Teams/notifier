@@ -2,12 +2,14 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   # before_filter :insert_password, :only => [:new, :create]
   def index
-    @users = User.all
+    @search = User.search(params[:q])
+    @users = @search.result
+    # @users = User.all
+
     respond_to do |format|
-      format.html
-      format.json { render json: @users }
+        format.html
+        format.json { render json: @users }
     end
-    
     
   end
 
@@ -56,13 +58,6 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to users_path
     end
-  end
-  
-  
-  private
-  
-  def insert_password
-    @user.password = 'password'
-    @user.password_confirmation = 'password'
-  end
+  end 
+
 end

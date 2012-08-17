@@ -41,8 +41,6 @@ $(function() {
 			$submitButton.removeAttr('disabled');
 		}
 
-	// $("#message_user_id").chosen()
-
 	});
 
 });

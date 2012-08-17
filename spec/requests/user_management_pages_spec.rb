@@ -44,6 +44,34 @@ describe "UserManagementPages" do
         click_link "EDIT"
         page.current_path.should == edit_user_path(@user)
       end
+
+      it "and search by user first name" do
+        fill_in 'q_first_name_or_last_name_or_company_name_cont', :with => @user.first_name
+        page.should have_content(@user.full_name)
+        page.should have_content(@user.company_name)
+        page.should have_content(@user.phone_number)
+        
+      end
+
+      it "and search by user last anem" do
+        fill_in 'q_first_name_or_last_name_or_company_name_cont', :with => @user.last_name
+        page.should have_content(@user.full_name)
+        page.should have_content(@user.company_name)
+        page.should have_content(@user.phone_number)
+        
+      end
+
+      it "and search by user last anem" do
+        fill_in 'q_first_name_or_last_name_or_company_name_cont', :with => @user.company_name
+        page.should have_content(@user.full_name)
+        page.should have_content(@user.company_name)
+        page.should have_content(@user.phone_number)
+
+        # keypress_script = "var e = $.Event('keydown', { keyCode: #{keycode} }); $('body').trigger(e);"
+        # page.driver.browser.execute_script(keypress_script)
+        
+      end
+
       
     end
     

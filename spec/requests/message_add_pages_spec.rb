@@ -18,14 +18,16 @@ describe "MessageAddPages" do
   context "can send notification to a user" do
 
     it "when email is selected" do
-      # selector = '#message_to_user_name'
+      selector = '#message_to_user_name'
       to_user = Factory.create(:user, :preference => '2')
 
-      fill_in 'message_user_id', :with => to_user.full_name
-      fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
-      # sleep(3)
+      # fill_in 'message_user_name', :with => to_user.full_name
+      fill_in 'message_to_user_name', :with => to_user.full_name
+      sleep(3)
       # page.execute_script " $('#{selector}').trigger(\"mouseenter\").click();"
 
+      page.driver.browser.execute_script(selector)
+        
       fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
  
 
@@ -42,11 +44,17 @@ describe "MessageAddPages" do
       VCR.use_cassette "messages/phone_number" do
         to_user = Factory.create(:user, :preference => '1')
 
-        select 'message_user_id', :with => to_user.full_name
-        # fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
-        fill_in 'message_content', :with => Faker::Lorem.paragraph[0..100]
+        selector = '#message_to_user_name'
+
+        # fill_in 'message_user_name', :with => to_user.full_name
+        fill_in 'message_to_user_name', :with => to_user.full_name
+        sleep(3)
+        # page.execute_script " $('#{selector}').trigger(\"mouseenter\").click();"
+
+        page.driver.browser.execute_script(selector)
+
+        fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
  
-        # page.current_path.should == new_message_path
 
         choose 'message_message_type_id_1'
         click_button 'SEND NOTIFICATION'
@@ -55,15 +63,16 @@ describe "MessageAddPages" do
     
     it "when both are selected" do
       VCR.use_cassette "messages/phone_number" do
-        # selector = '#message_to_user_id'
-        # to_user = Factory.create(:user, :preference => '3')
+        selector = '#message_to_user_id'
         to_user = Factory.create(:user, :preference => '3')
 
         fill_in 'message_user_id', :with => to_user.full_name
         fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
-        # sleep(3)
-        # page.execute_script " $('#{selector}').
-        #   trigger(\"mouseenter\").click();"
+        sleep(3)
+        # page.execute_script " $('#{selector}').trigger(\"mouseenter\").click();"
+
+        page.driver.browser.execute_script(selector)
+
         fill_in 'message_content', :with => Faker::Lorem.paragraph[0..100]
  
         ActionMailer::Base.deliveries = []

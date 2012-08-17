@@ -1,4 +1,10 @@
 <section id="content-area" class="box">
+
+    <%= search_form_for @search, :html => {:class => "form-inline"} do |f| %>
+    <%= f.text_field :first_name_or_last_name_or_company_name_cont, :class => "input-medium search-field", :placeholder => "Find contact or company" %>
+    <!-- <%= f.submit "Search", :name => nil, :class => "btn" %> -->
+  <% end %>
+
   <table id="users">
     <tr>
       <th>NAME</th>
