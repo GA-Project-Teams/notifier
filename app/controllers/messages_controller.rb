@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new(params[:message])
-    @to_user = User.find(@message.to_user_id)
+    @to_user = User.find(@message.to_user_id)    
     if @message.save
       if (@message.message_type_id == 3)
         UserMailer.notify_user(@to_user, @message).deliver

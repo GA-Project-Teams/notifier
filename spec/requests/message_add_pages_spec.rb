@@ -18,12 +18,17 @@ describe "MessageAddPages" do
   context "can send notification to a user" do
 
     it "when email is selected" do
-      to_user = Factory.create(:user)
+      # selector = '#message_to_user_name'
+      to_user = Factory.create(:user, :preference => '2')
 
-      # fill_in 'message_to_user_id', :with => to_user.id
+      fill_in 'message_to_user_id', :with => to_user.id
       fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
+      # sleep(3)
+      # page.execute_script " $('#{selector}').trigger(\"mouseenter\").click();"
+
       fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
  
+
       # page.current_path.should == new_message_path
       ActionMailer::Base.deliveries = []
       
@@ -35,11 +40,11 @@ describe "MessageAddPages" do
     
     it "when sms is selected" do
       VCR.use_cassette "messages/phone_number" do
-        to_user = Factory.create(:user)
+        to_user = Factory.create(:user, :preference => '1')
 
-        # fill_in 'message_to_user_id', :with => to_user.id
-        fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
-        fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
+        fill_in 'message_to_user_id', :with => to_user.id
+        # fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
+        fill_in 'message_content', :with => Faker::Lorem.paragraph[0..100]
  
         # page.current_path.should == new_message_path
 
@@ -50,11 +55,16 @@ describe "MessageAddPages" do
     
     it "when both are selected" do
       VCR.use_cassette "messages/phone_number" do
-        to_user = Factory.create(:user)
+        # selector = '#message_to_user_id'
+        # to_user = Factory.create(:user, :preference => '3')
+        to_user = Factory.create(:user, :preference => '3')
 
-        # fill_in 'message_to_user_id', :with => to_user.id
+        fill_in 'message_to_user_id', :with => to_user.id
         fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
-        fill_in 'message_content', :with => Faker::Lorem.paragraph[0..160]
+        # sleep(3)
+        # page.execute_script " $('#{selector}').
+        #   trigger(\"mouseenter\").click();"
+        fill_in 'message_content', :with => Faker::Lorem.paragraph[0..100]
  
         ActionMailer::Base.deliveries = []
 
