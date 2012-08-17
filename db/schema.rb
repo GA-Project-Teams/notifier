@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817065613) do
+ActiveRecord::Schema.define(:version => 20120817070004) do
 
   create_table "messages", :force => true do |t|
     t.datetime "created_at",      :null => false
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20120817065613) do
     t.integer  "from_user_id"
     t.integer  "message_type_id"
   end
+
+  add_index "messages", ["from_user_id"], :name => "index_messages_on_from_user_id"
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
