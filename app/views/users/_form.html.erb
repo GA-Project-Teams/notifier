@@ -1,7 +1,7 @@
 <%= simple_form_for(@user) do |f| %>
  <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this widget from being saved:</h2>
+      <p><%= pluralize(@user.errors.count, "error") %> prohibited this widget from being saved:</p>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
@@ -26,7 +26,7 @@
     <div class="row">
       <%= f.input :email, :required => true, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
       <%= f.input :phone_number, :required => false, :autofocus => true, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=> "field-name" } %>
-      <%= f.input :preference, :required => false, :autofocus => true, :as => :select, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => '1', :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=>"field-name" } %>
+      <%= f.input :preference, :required => false, :autofocus => true, :as => :select, :collection => [['SMS','1'],['Email','2'],['Both','3']], :value => @user.preference, :wrapper_html=> { :class=> "span3" }, :input_html=> { :class=>"field-name" } %>
 
     </div>
 

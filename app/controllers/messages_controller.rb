@@ -5,10 +5,11 @@ class MessagesController < ApplicationController
   end
   
   def create
-    @message = Message.new(params[:message])   
+    @message = Message.new(params[:message])
+    @user = User.find(@message.user_id)
     if @message.save
-      send_notification(@user, @message)
-      redirect_to(notify_message_path, :notice => 'Notification sent!')
+      @message.send_notification(@user, @message)
+      redirect_to(new_message_path, :notice => 'Notification sent!')
     else
       render action: 'new'
     end

@@ -8,8 +8,6 @@ class Message < ActiveRecord::Base
   validates :from_user_id, :presence => true
   validates :message_type_id, :presence => true
   
-  private
-  
   def send_notification(to_user, message)
     if (message.message_type_id == 3)
       send_email(to_user, message)
