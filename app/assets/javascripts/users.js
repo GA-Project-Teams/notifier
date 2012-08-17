@@ -3,7 +3,7 @@
 $(function() {
 
 	
-	$("td.links").hide();
+	// $("td.links").hide();
 	$("tr").live("hover",
 	  function () {
 	    // $(this).("td.links").show();

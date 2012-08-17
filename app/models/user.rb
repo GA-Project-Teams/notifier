@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessor :enable_strict_validation
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :email, :company_name, :password, :password_confirmation, :remember_me, :phone_number, :preference
+  attr_accessible :first_name, :last_name, :email, :company_name, :password, :password_confirmation, :remember_me, :phone_number, :preference, :role_ids
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
@@ -24,6 +24,12 @@ class User < ActiveRecord::Base
   validates :password_confirmation, :presence => true, :if => :enable_strict_validation
 
   validates :email, :uniqueness => true
+
+  ROLES = %w[admin user]
+
+  def role_symbols
+    [role.to_sym]
+  end
   
   def full_name
     "#{first_name} #{last_name}"
