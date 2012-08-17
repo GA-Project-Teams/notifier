@@ -21,7 +21,7 @@ describe "MessageAddPages" do
       # selector = '#message_to_user_name'
       to_user = Factory.create(:user, :preference => '2')
 
-      fill_in 'message_to_user_id', :with => to_user.id
+      fill_in 'message_user_id', :with => to_user.full_name
       fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
       # sleep(3)
       # page.execute_script " $('#{selector}').trigger(\"mouseenter\").click();"
@@ -42,7 +42,7 @@ describe "MessageAddPages" do
       VCR.use_cassette "messages/phone_number" do
         to_user = Factory.create(:user, :preference => '1')
 
-        fill_in 'message_to_user_id', :with => to_user.id
+        select 'message_user_id', :with => to_user.full_name
         # fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
         fill_in 'message_content', :with => Faker::Lorem.paragraph[0..100]
  
@@ -59,7 +59,7 @@ describe "MessageAddPages" do
         # to_user = Factory.create(:user, :preference => '3')
         to_user = Factory.create(:user, :preference => '3')
 
-        fill_in 'message_to_user_id', :with => to_user.id
+        fill_in 'message_user_id', :with => to_user.full_name
         fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
         # sleep(3)
         # page.execute_script " $('#{selector}').

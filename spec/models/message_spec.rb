@@ -4,22 +4,30 @@ describe Message do
   
   context "should not be valid" do
     it "without content" do
-      message = Message.new(to_user_id: "1", from_user_id: "1", message_type_id: "1")
+      user = FactoryGirl.create(:user)
+      from_user = FactoryGirl.create(:user)
+      message = Message.new(user_id: user.id, from_user_id: from_user.id, message_type_id: "1")
       message.should_not be_valid
     end
     
-    it "without to_user_id" do
-      message = Message.new(content: "Hi", from_user_id: "1", message_type_id: "1")
+    it "without user_full_name" do
+      user = FactoryGirl.create(:user)
+      from_user = FactoryGirl.create(:user)
+      message = Message.new(content: "Hi", from_user_id: from_user.id, message_type_id: "1")
       message.should_not be_valid
     end
     
     it "without from_user_id" do
-      message = Message.new(content: "Hi", to_user_id: "1", message_type_id: "1")
+      user = FactoryGirl.create(:user)
+      from_user = FactoryGirl.create(:user)
+      message = Message.new(content: "Hi", user_id: user.id, message_type_id: "1")
       message.should_not be_valid
     end
     
     it "without message_type_id" do
-      message = Message.new(content: "Hi", to_user_id: "1", from_user_id: "1")
+      user = FactoryGirl.create(:user)
+      from_user = FactoryGirl.create(:user)
+      message = Message.new(content: "Hi", user_id: user.id, from_user_id: from_user.id)
       message.should_not be_valid
     end
   end
@@ -31,7 +39,7 @@ describe Message do
         ActiveRecord::RecordInvalid
       )
     end
-    it "to_user_id" do
+    it "user_full_name" do
       expect { message.save! }.to raise_error(
         ActiveRecord::RecordInvalid
       )
@@ -49,12 +57,12 @@ describe Message do
   end
   
   it { should respond_to(:content) }
-  it { should respond_to(:to_user_id) }
+  it { should respond_to(:user_id) }
   it { should respond_to(:from_user_id) }
   it { should respond_to(:message_type_id) }
   
   it { should validate_presence_of(:content) }
-  it { should validate_presence_of(:to_user_id) }
+  it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:from_user_id) }
   it { should validate_presence_of(:message_type_id) }
   

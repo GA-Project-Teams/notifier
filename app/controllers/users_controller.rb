@@ -25,9 +25,9 @@ class UsersController < ApplicationController
     # @user = User.new(params[:user], :password => generated_password, :password_confimration => generated_password)
     @user = User.new(params[:user])
     # @user.skip_confirmation!
-    @user.enable_strict_validation = true
-    @user.reset_password_token = User.reset_password_token
-    @user.reset_password_sent_at = Time.now
+    # @user.enable_strict_validation = true
+    # @user.reset_password_token = User.reset_password_token
+    # @user.reset_password_sent_at = Time.now
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
       redirect_to(@user, :notice => 'CONTACT ADDED Success! Your contact has been added and an email has been sent to the address provided.')

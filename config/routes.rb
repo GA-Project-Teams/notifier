@@ -11,6 +11,13 @@ Notifier::Application.routes.draw do
 
   root :to => "messages#new"
 
-  resources :users  
+  resources :users do
+    resources :messages do
+      member do
+        get :new
+        get :notify
+      end
+    end
+  end  
 
 end

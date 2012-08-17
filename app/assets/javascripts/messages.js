@@ -43,4 +43,7 @@ $(function() {
     	items: 5,
     });
 
+		$("#message_user_id").chosen()
+
 });
+
