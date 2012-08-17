@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
+  rolify
   has_many :messages
   before_save :set_password_token
   # after_save :send_welcome_email
+  scope :by_company, order("company_name ASC")
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

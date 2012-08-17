@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # before_filter :insert_password, :only => [:new, :create]
   def index
     @search = User.search(params[:q])
-    @users = @search.result
+    @users = @search.result.by_company
     # @users = User.all
 
     respond_to do |format|

@@ -155,6 +155,7 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rolify (3.2.0)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -232,6 +233,7 @@ DEPENDENCIES
   rails (= 3.2.2)
   rails_config
   ransack
+  rolify
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
