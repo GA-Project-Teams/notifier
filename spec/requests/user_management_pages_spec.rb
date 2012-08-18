@@ -3,7 +3,9 @@ require 'spec_helper'
 describe "UserManagementPages" do
   context "can visit user management page" do
     before do
-      @user = Factory.create(:user) 
+      admin = Factory.create(:role)
+      @user = Factory.create(:user, :role_ids => admin.id) 
+
       visit root_path
       
       fill_in 'user_email', :with => @user.email
