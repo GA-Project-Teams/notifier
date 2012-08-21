@@ -5,8 +5,9 @@
   		<input class="string required typeahead field-name span6" data-provide="typeahead" id="message_to_user_name" placeholder="start typing name"/>
   	</div>
 
-    <%= f.input :to_user_id, :required => true, :as=> :hidden %><span id="counter">160</span>
-    <%= f.input :content, :required => true, :input_html=> { :class=> "field-message span6", :placeholder=> "your message goes here, keep it short, 140 characters short..." } %>
+    <%= f.input :to_user_id, :required => true, :as=> :hidden %>
+    <div id="counter">160</div>
+    <%= f.input :content, :required => true, :label=> "What would you like to say?",:input_html=> { :class=> "field-message span6", :placeholder=> "your message goes here, keep it short, 160 characters short..." } %>
     <%= f.input :from_user_id, :required => true, :as => :hidden, :input_html => {:value => current_user.id} %>
     <%= f.collection_radio_buttons :message_type_id, [['SMS','1'],['Email','2'],['Both','3']], :last, :first %>
   </div>
