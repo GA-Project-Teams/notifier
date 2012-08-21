@@ -9,7 +9,7 @@
 			    <%= f.input :email, :required => false, :autofocus => true, :input_html=> { :class=>"field-name span4", :placeholder=>"Email"}, :label => false %>
 			    <%= f.input :password, :required => false, :input_html=> { :class=>"field-name span4", :placeholder=>"Password"}, :label => false %>
 			    <span class="error"><%= alert %></span>
-			    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+			    	<%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
 		  	</div>
 			</div>
 		  <div class="actions">
