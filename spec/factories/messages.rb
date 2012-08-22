@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :message do
     content { Faker::Lorem.paragraph[0..160] }
-    to_user_id { rand(10) }
+    user_id { rand(10) }
     from_user_id { rand(10) }
     message_type_id { rand(2) }
   end

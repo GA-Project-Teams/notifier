@@ -1,8 +1,33 @@
 <section id="content-area" class="box">
-	<% @users.each do |user| %>
-  email:  <%= link_to user.email, edit_user_path(user) %> <br />
+
+  <%= search_form_for @search, :html => {:class => "form-inline"} do |f| %>
+    <%= f.text_field :first_name_or_last_name_or_company_name_cont, :class => "input-medium search-field", :placeholder => "Find contact or company" %>
+    <!-- <%= f.submit "Search", :name => nil, :class => "btn" %> -->
   <% end %>
+  <%= link_to "ADD CONTACT", new_user_path, :class => "red-button" %>
+
+
+  <table id="users">
+    <tr>
+      <th>NAME</th>
+      <th>COMPANY</th>
+      <th>EMAIL</th>
+      <th>NUMBER</th>
+    </tr>
+  	<% @users.each do |user| %>
+  	<tr>
+  	  <td><%= user.full_name %></td>
+  	  <td><%= user.company_name %></td>
+  	  <td><%= user.email %></td>
+  	  <td><%= user.phone_number %></td>
+  	  <td class="links">
+    	  <%= link_to "NOTIFY", notify_message_path(user) %>
+    	  <%= link_to "EDIT", edit_user_path(user) %>
+  	    <%= link_to "DELETE", user, method: :delete, data: { confirm: 'Are you sure?'} %>
+      
+  	  </td>
+    </tr>  
+    <% end %>
+  </table>
 </section>
-<section>
-  <%= link_to "Add Contact", new_user_path %>
-</section>
+

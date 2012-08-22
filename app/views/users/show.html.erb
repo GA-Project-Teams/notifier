@@ -1,5 +1,5 @@
 <section class="span12">
-	<h2>some text</h2>
+	<h2>SUCCESS!</h2>
 	<% if flash[:notice] %>
 	  <p class="notice"><%= flash[:notice] %></p>
 	<% end %>
@@ -9,12 +9,13 @@
 
 	<div class="row">
 		<div class="span6">
-			<p>Success! The information for the following user has been added/updated!</p>
+			<p>The information for the following user has been added/updated!</p>
 			<div id="user_information">
 				<p>Name: <%= @user.first_name %> <%= @user.last_name %><br /> 
 				Company Name: <%= @user.company_name %><br />
-				Phone: <%= @user.phone_number %> Email Address: <%= @user.email %><br />
-				Last Update: <%= @user.updated_at %>
+				Phone: <%= @user.phone_number %><br />
+				Email Address: <%= @user.email %><br /> 
+				Last Update: <%= @user.updated_at.strftime("%B %e %Y at %l:%M%p") %>
 				</p>
 			</div>
 		</div>
@@ -25,7 +26,7 @@
 			<%= link_to "VIEW CONTACTS", users_path, :class => "red-button" %>
 		</div>	
 		<div id="button2" class="span3">
-			<%= link_to "SEND NOTIFICATION", root_path, :class => "red-button" %>
+			<%= link_to "SEND NOTIFICATION", notify_message_path(@user), :class => "red-button" %>
 		</div>
 	</div>
 </section>

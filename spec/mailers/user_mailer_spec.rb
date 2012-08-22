@@ -7,7 +7,7 @@ describe UserMailer do
     let(:to_user) { Factory.create(:user) }
     let(:from_user) { Factory.create(:user) }
     let(:mail) { UserMailer.signup_confirmation(user) }
-    let(:message) { Message.create!(content: Faker::Lorem.paragraph, to_user_id: to_user.id, from_user_id: from_user.id, message_type_id: 2) }
+    let(:message) { Message.create!(content: Faker::Lorem.paragraph, user_id: to_user.id, from_user_id: from_user.id, message_type_id: 2) }
     
     it "renders the headers" do
       mail.subject.should eq("Welcome!")

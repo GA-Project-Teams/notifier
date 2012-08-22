@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://AC7b40b24acaa4eaf33f11de10105880a6:63c6c31c3bb4b9b2f419fdeedff535d3@api.twilio.com/2010-04-01/Accounts/AC7b40b24acaa4eaf33f11de10105880a6/SMS/Messages.json
+    uri: https://<TWILIO_SID>:<TWILIO_TOKEN>@api.twilio.com/2010-04-01/Accounts/<TWILIO_SID>/SMS/Messages.json
     body:
       encoding: US-ASCII
-      string: From=%2b18609866818&To=1234567890&Body=Autem%20est%20voluptate%20cum%20iste%20non%20voluptatem%20eaque.%20Quis%20vel%20ut%20consequatur%20sequi.%20Exercitationem%20est%20nobis%20aperiam%20perspiciatis%20officiis.
+      string: From=%2b1<TWILIO_PHONE_NUMBER>&To=<MY_NUMBER>&Body=Id%20quam%20dolorem%20vel%20in%20qui%20culpa.%20Eos%20ratione%20saepe%20rerum%20sunt%20ex.%20Assumenda%20non%20provident%20rerum%20quo%20
     headers:
       accept:
       - application/json
@@ -14,7 +14,7 @@ http_interactions:
       user-agent:
       - twilio-ruby/3.8.0
       authorization:
-      - Basic QUM3YjQwYjI0YWNhYTRlYWYzM2YxMWRlMTAxMDU4ODBhNjo2M2M2YzMxYzNiYjRiOWIyZjQxOWZkZWVkZmY1MzVkMw==
+      - Basic QUM3YjQwYjI0YWNhYTRlYWYzM2YxMWRlMTAxMDU4ODBhNjpkZjFmY2ZjNDM5MTBhOWUzODY5MjA4ZDBhNzcyNGU1Mg==
       content-type:
       - application/x-www-form-urlencoded
   response:
@@ -25,21 +25,21 @@ http_interactions:
       server:
       - nginx
       date:
-      - Wed, 15 Aug 2012 19:41:57 GMT
+      - Fri, 17 Aug 2012 03:15:16 GMT
       content-type:
       - application/json; charset=utf-8
       content-length:
-      - '607'
+      - '570'
       connection:
       - close
       etag:
       - ''
     body:
       encoding: US-ASCII
-      string: ! '{"sid":"SM42069e2bf3803f389ab0aa34b1509447","date_created":"Wed,
-        15 Aug 2012 19:41:57 +0000","date_updated":"Wed, 15 Aug 2012 19:41:57 +0000","date_sent":null,"account_sid":"AC7b40b24acaa4eaf33f11de10105880a6","to":"+18608333149","from":"+18609866818","body":"Autem
-        est voluptate cum iste non voluptatem eaque. Quis vel ut consequatur sequi.
-        Exercitationem est nobis aperiam perspiciatis officiis.","status":"queued","direction":"outbound-api","api_version":"2010-04-01","price":null,"uri":"\/2010-04-01\/Accounts\/AC7b40b24acaa4eaf33f11de10105880a6\/SMS\/Messages\/SM42069e2bf3803f389ab0aa34b1509447.json"}'
+      string: ! '{"sid":"SM15bfc8d51868f2d444f1ce64745d5d5e","date_created":"Fri,
+        17 Aug 2012 03:15:16 +0000","date_updated":"Fri, 17 Aug 2012 03:15:16 +0000","date_sent":null,"account_sid":"<TWILIO_SID>","to":"+1<MY_NUMBER>","from":"+1<TWILIO_PHONE_NUMBER>","body":"Id
+        quam dolorem vel in qui culpa. Eos ratione saepe rerum sunt ex. Assumenda
+        non provident rerum quo","status":"queued","direction":"outbound-api","api_version":"2010-04-01","price":null,"uri":"\/2010-04-01\/Accounts\/<TWILIO_SID>\/SMS\/Messages\/SM15bfc8d51868f2d444f1ce64745d5d5e.json"}'
     http_version: '1.1'
-  recorded_at: Wed, 15 Aug 2012 19:41:57 GMT
+  recorded_at: Fri, 17 Aug 2012 03:15:17 GMT
 recorded_with: VCR 2.2.4

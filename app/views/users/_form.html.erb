@@ -34,6 +34,13 @@
       <%= f.input :password, :readonly => true, :wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
       <%= f.input :password_confirmation, :readonly => true,:wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
     </div>
+  
+    <div>
+      
+      <%= f.association :roles, :collection => Role.global,
+                      :label_method => lambda { |el| t "simple_form.options.user.roles.#{el.name}" }, :as => :check_boxes %>
+    </div>
+
   </div>
     <% if current_page?( :action => 'new' ) %>
       <div class='actions'>
