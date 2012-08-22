@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  rolify
+  has_many :messages
+  before_save :set_password_token
+  # after_save :send_welcome_email
+  scope :by_company, order("company_name ASC")
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -8,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessor :enable_strict_validation
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :email, :company_name, :password, :password_confirmation, :remember_me, :phone_number, :preference
+  attr_accessible :first_name, :last_name, :email, :company_name, :password, :password_confirmation, :remember_me, :phone_number, :preference, :role_ids
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
@@ -18,6 +24,26 @@ class User < ActiveRecord::Base
   validates :password_confirmation, :presence => true, :if => :enable_strict_validation
 
   validates :email, :uniqueness => true
+
+  ROLES = %w[admin user]
+
+  def role_symbols
+    [role.to_sym]
+  end
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
+  def set_password_token
+    self.enable_strict_validation = true
+    self.reset_password_token = User.reset_password_token
+    self.reset_password_sent_at = Time.zone.now
+  end
+  
+  def send_welcome_email
+    UserMailer.signup_confirmation(self).deliver
+  end
   
 end
 

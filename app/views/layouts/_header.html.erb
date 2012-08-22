@@ -2,9 +2,11 @@
   <div class="row">
     <h1 class="span4">General Assembly</h1>
     	<nav class="span4">
+      <% if can? :create, @message %>
     		<%= link_to "NOTIFY", root_path, :class=>"current" %><span class="line">|</span>
         <%= link_to "VIEW CONTACTS", users_path %><span class="line">|</span>
         <%= link_to "ADD CONTACT", new_user_path %>
+      <% end %>
     	</nav>
       <div class="span2 offset2">
       <% if user_signed_in? %>

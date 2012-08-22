@@ -2,11 +2,15 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   # before_filter :insert_password, :only => [:new, :create]
   def index
-    @users = User.all
+    @search = User.search(params[:q])
+    @users = @search.result.by_company
+    # @users = User.all
+
     respond_to do |format|
-      format.html
-      format.json { render json: @users }
+        format.html
+        format.json { render json: @users }
     end
+    
   end
 
   def show
@@ -23,9 +27,9 @@ class UsersController < ApplicationController
     # @user = User.new(params[:user], :password => generated_password, :password_confimration => generated_password)
     @user = User.new(params[:user])
     # @user.skip_confirmation!
-    @user.enable_strict_validation = true
-    @user.reset_password_token = User.reset_password_token
-    @user.reset_password_sent_at = Time.now
+    # @user.enable_strict_validation = true
+    # @user.reset_password_token = User.reset_password_token
+    # @user.reset_password_sent_at = Time.now
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
       redirect_to(@user, :notice => 'CONTACT ADDED Success! Your contact has been added and an email has been sent to the address provided.')
@@ -49,11 +53,11 @@ class UsersController < ApplicationController
     end
   end
   
-  
-  private
-  
-  def insert_password
-    @user.password = 'password'
-    @user.password_confirmation = 'password'
-  end
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to users_path
+    end
+  end 
+
 end

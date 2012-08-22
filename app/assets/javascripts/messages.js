@@ -17,7 +17,7 @@ $(function() {
     		});
         },
         onselect: function(obj) {
-        	$('#message_to_user_id').val(obj.id.toString());
+        	$('#message_user_id').val(obj.id.toString());
         	$('#message_message_type_id_'+obj.preference).prop('checked', 'checked');
         },
         property: 'value',
@@ -41,5 +41,6 @@ $(function() {
 			$submitButton.removeAttr('disabled');
 		}
 
-	})
+	});
+
 });

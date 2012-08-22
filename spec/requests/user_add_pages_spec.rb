@@ -6,7 +6,8 @@ describe "UserAddPages" do
     # include Devise::TestHelpers
     
     before do
-      user = Factory.create(:user) 
+      admin = Factory.create(:role)
+      user = Factory.create(:user, :role_ids => admin.id) 
       visit root_path
       
       fill_in 'user_email', :with => user.email

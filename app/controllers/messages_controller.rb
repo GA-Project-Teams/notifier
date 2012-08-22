@@ -6,36 +6,18 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new(params[:message])
-    @to_user = User.find(@message.to_user_id)
+    @user = User.find(@message.user_id)
     if @message.save
-      if (@message.message_type_id == 3)
-        UserMailer.notify_user(@to_user, @message).deliver
-        send_text_message(@to_user, @message)
-      elsif (@message.message_type_id == 2)
-        UserMailer.notify_user(@to_user, @message).deliver
-      elsif (@message.message_type_id == 1)
-        send_text_message(@to_user, @message)
-      end
+      @message.send_notification(@user, @message)
       redirect_to(new_message_path, :notice => 'Notification sent!')
     else
       render action: 'new'
     end
   end
   
-  private
-  
-  def send_text_message(to_user, message)
-    twilio_sid = 'AC7b40b24acaa4eaf33f11de10105880a6'
-    twilio_token = '63c6c31c3bb4b9b2f419fdeedff535d3'
-    twilio_phone_number = '8609866818'
-    
-    @twilio_client = Twilio::REST::Client.new(twilio_sid, twilio_token)
-    
-    @twilio_client.account.sms.messages.create(
-      :from => "+1#{twilio_phone_number}",
-      :to => to_user.phone_number,
-      :body => message.content
-    )
+  def notify
+    @message = Message.new
+    @user = User.find(params[:id])
   end
-  
+
 end
