@@ -36,21 +36,22 @@
     </div>
   
     <div>
-      
       <%= f.association :roles, :collection => Role.global,
-                      :label_method => lambda { |el| t "simple_form.options.user.roles.#{el.name}" }, :as => :check_boxes %>
+                      :label_method => lambda { |el| t "simple_form.options.user.roles.#{el.name}" }, :as => :check_boxes, :label=> "Role", :hint=>"Admin users can send notifications and edit other users' information" %>
     </div>
 
   </div>
+  <div class="row">
     <% if current_page?( :action => 'new' ) %>
-      <div class='actions'>
+      <div class='actions span3'>
       <%= f.button :submit, "ADD CONTACT", :class => "red-button" %>
     <% else %> 
-      <div class='actions'>
+      <div class='actions span3'>
       <%= f.button :submit, "UPDATE", :class => "red-button" %>
     <% end %>
   </div>
 <% end %>
 
-<%= link_to "OR CANCEL", '/', :class => "content-link span3" %>
+<%= link_to "OR CANCEL", '/', :class => "content-link cancel", :id=>"cancel" %>
+</div>
 
