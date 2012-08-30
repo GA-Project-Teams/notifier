@@ -1,10 +1,11 @@
 <section id="content-area" class="box">
-
-  <%= search_form_for @search, :html => {:class => "form-inline"} do |f| %>
-    <%= f.text_field :first_name_or_last_name_or_company_name_cont, :class => "input-medium search-field", :placeholder => "Find contact or company" %>
-    <!-- <%= f.submit "Search", :name => nil, :class => "btn" %> -->
+  <div id="contacts_header" >
+  <h2 class="span3">Contacts</h2>
+  <%= search_form_for @search, :html => {:class => "form-inline span3 offset3"} do |f| %>
+    <%= f.text_field :first_name_or_last_name_or_company_name_cont, :class => "input-medium search-field field-name span3", :placeholder => "Find contact or company" %>
   <% end %>
-  <%= link_to "ADD CONTACT", new_user_path, :class => "red-button" %>
+  <%= link_to "ADD CONTACT", new_user_path, :class=>"red-button contacts span3" %>
+  </div>
 
 
   <table id="users">
@@ -13,6 +14,7 @@
       <th>COMPANY</th>
       <th>EMAIL</th>
       <th>NUMBER</th>
+      <th></th>
     </tr>
   	<% @users.each do |user| %>
   	<tr>
@@ -21,9 +23,9 @@
   	  <td><%= user.email %></td>
   	  <td><%= user.phone_number %></td>
   	  <td class="links">
-    	  <%= link_to "NOTIFY", notify_message_path(user) %>
-    	  <%= link_to "EDIT", edit_user_path(user) %>
-  	    <%= link_to "DELETE", user, method: :delete, data: { confirm: 'Are you sure?'} %>
+    	  <%= link_to "NOTIFY", notify_message_path(user), :class=> "red-links invisible" %>
+    	  <%= link_to "EDIT", edit_user_path(user), :class=> "red-links invisible" %>
+  	    <%= link_to "DELETE", user, method: :delete, data: { confirm: 'Are you sure?'}, :class=> "red-links invisible" %>
       
   	  </td>
     </tr>  
