@@ -38,7 +38,7 @@ describe "UserAddPages" do
     
     it "and cancel adding users" do
       click_link "OR CANCEL"
-      page.current_path.should == root_path
+      page.current_path.should == new_message_path
     end
   end
 end

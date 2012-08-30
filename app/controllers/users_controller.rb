@@ -27,9 +27,9 @@ class UsersController < ApplicationController
     # @user = User.new(params[:user], :password => generated_password, :password_confimration => generated_password)
     @user = User.new(params[:user])
     # @user.skip_confirmation!
-    # @user.enable_strict_validation = true
-    # @user.reset_password_token = User.reset_password_token
-    # @user.reset_password_sent_at = Time.now
+    @user.enable_strict_validation = true
+    @user.reset_password_token = User.reset_password_token
+    @user.reset_password_sent_at = Time.zone.now
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
       redirect_to(@user, :notice => 'CONTACT ADDED Success! Your contact has been added and an email has been sent to the address provided.')
@@ -46,8 +46,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]) 
     if @user.update_attributes(params[:user])
       # UserMailer.edit_contact_info(@user).deliver
-      sign_in @user, :bypass => true
-      redirect_to(@user, :notice => 'CONTACT UPDATED Success! Your contact will be notified that their contact information has been updated.')
+      # sign_in @user, :bypass => true
+      redirect_to(@user, :notice => 'CONTACT UPDATE Success!')
     else
       render action: 'edit'
     end

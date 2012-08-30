@@ -9,8 +9,6 @@ Notifier::Application.routes.draw do
     end
   end
 
-  root :to => "messages#new"
-
   resources :users do
     resources :messages do
       member do
@@ -20,6 +18,7 @@ Notifier::Application.routes.draw do
     end
   end  
 
+  root :to => "home#index"
 
 end
 #== Route Map

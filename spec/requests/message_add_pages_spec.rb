@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe "MessageAddPages" do
   before do
-    user = Factory.create(:user) 
+    admin = Factory.create(:role)
+    user = Factory.create(:user, :role_ids => admin.id) 
     visit root_path
     
     page.current_path.should == new_user_session_path
@@ -66,7 +67,7 @@ describe "MessageAddPages" do
         selector = '#message_to_user_id'
         to_user = Factory.create(:user, :preference => '3')
 
-        fill_in 'message_user_id', :with => to_user.full_name
+        # fill_in 'message_to_user_id', :with => to_user.full_name
         fill_in 'message_to_user_name', :with => "#{to_user.first_name} #{to_user.last_name}"
         sleep(3)
         # page.execute_script " $('#{selector}').trigger(\"mouseenter\").click();"
