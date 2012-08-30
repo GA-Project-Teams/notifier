@@ -4,7 +4,9 @@ describe "UserEditPages" do
   describe "can visit user edit page" do
     
     before do
-      @user = Factory.create(:user) 
+      admin = Factory.create(:role)
+      @user = Factory.create(:user, :role_ids => admin.id) 
+
       visit root_path
       
       fill_in 'user_email', :with => @user.email
@@ -37,7 +39,7 @@ describe "UserEditPages" do
     
     it "and cancel adding users" do
       click_link "OR CANCEL"
-      page.current_path.should == root_path
+      page.current_path.should == new_message_path
     end
   end
 end

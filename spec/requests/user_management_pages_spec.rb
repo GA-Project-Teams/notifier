@@ -1,7 +1,26 @@
 require 'spec_helper'
 
 describe "UserManagementPages" do
-  context "can visit user management page" do
+
+  context "as a non admin user" do
+    before do
+      @regular_user = Factory.create(:user)
+
+      visit root_path
+
+      fill_in 'user_email', :with => @regular_user.email
+      fill_in 'user_password', :with => @regular_user.password
+
+      click_link_or_button "Sign in"
+
+    end
+
+    it "cannot edit users" do
+      visit users_path
+    end
+  end
+  
+  context "as an admin user" do
     before do
       admin = Factory.create(:role)
       @user = Factory.create(:user, :role_ids => admin.id) 
@@ -16,7 +35,7 @@ describe "UserManagementPages" do
       click_link "VIEW CONTACTS"
     end
     
-    describe "and view users" do
+    describe "can visit the user management page and view users" do
 
       it "and be able to delete a user" do
         page.current_path.should == users_path
