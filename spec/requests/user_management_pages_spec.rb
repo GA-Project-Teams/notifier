@@ -11,13 +11,32 @@ describe "UserManagementPages" do
       fill_in 'user_email', :with => @regular_user.email
       fill_in 'user_password', :with => @regular_user.password
 
-      click_link_or_button "Sign in"
+      click_on "Sign in"
 
     end
 
-    it "cannot edit users" do
+    it "cannot view a list of users" do
       visit users_path
+      page.current_path.should_not == users_path
+      page.current_path.should == edit_user_path(@regular_user)
     end
+
+    it "cannot view another user page" do
+      user2 = Factory.create(:user)
+
+      visit edit_user_path(user2)
+      page.current_path.should_not == edit_user_path(user2)
+      page.current_path.should == edit_user_path(@regular_user)
+    end
+
+    it "cannot create messages" do
+
+      visit new_message_path
+      page.current_path.should_not == new_message_path
+      page.current_path.should == edit_user_path(@regular_user)
+    end
+
+    
   end
   
   context "as an admin user" do

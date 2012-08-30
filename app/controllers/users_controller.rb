@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   # before_filter :insert_password, :only => [:new, :create]
+
+  load_and_authorize_resource
   def index
     @search = User.search(params[:q])
     @users = @search.result.by_company
