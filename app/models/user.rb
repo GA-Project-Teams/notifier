@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   rolify
-  has_many :messages
+  has_many    :messages
   before_save :set_password_token
+  after_save  :normalize_phone_number
+
   # after_save :send_welcome_email
   scope :by_company, order("company_name ASC")
   
@@ -39,6 +41,11 @@ class User < ActiveRecord::Base
     self.enable_strict_validation = true
     self.reset_password_token = User.reset_password_token
     self.reset_password_sent_at = Time.zone.now
+  end
+
+  def normalize_phone_number
+    self.phone_number.rstrip!
+    self.phone_number.gsub!(/[-. ]/,'')
   end
   
   def send_welcome_email
