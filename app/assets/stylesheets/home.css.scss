@@ -25,7 +25,7 @@ $font-hover-color: #C21E27;
 $table-border: solid 1px #D4D5D5;
 
 
-/* 00 - general ******************************************/
+/* General  ******************************************/
 body { font-family: $body-fonts; font-size: 12px; }
 
 h2 { font-family: $heading-fonts; font-size: 48px; padding: 0px 0px 20px 0px; text-transform: uppercase; line-height: 0.98; }
@@ -39,7 +39,7 @@ a { text-decoration: none; text-transform: uppercase; color: #999; }
 .inputs {}
 .center { margin-left: auto; margin-right: auto; }
 
-/* 0 - header *******************************************/
+/* Header *******************************************/
 header { color: #FFF; }
 
 header	a { text-decoration: none; text-transform: uppercase; color: #999; margin-left: 5px; font-size: 15px; font-weight: bold;}
@@ -55,11 +55,17 @@ nav a { font-family: arial; font-weight: 100; font-size: 15px; }
 
 span.line { margin-left: 6px; font-size: 20px; }
 
-/* 0 - footer *******************************************/
+/* Footer *******************************************/
 
 footer a { text-transform: none; margin-left: 5px; font-size: 12px;}
 
-/* 0 - content *******************************************/
+footer {
+	background: #333333; color: #999; height: 30px; padding: 15px 0px 10px 25px;
+
+	li { display: inline;} 
+}
+
+/* Content *******************************************/
 #container { background: #ffffff; }
 
 section { overflow: hidden; margin: 20px 0px; padding: 25px; }
@@ -68,7 +74,7 @@ section { overflow: hidden; margin: 20px 0px; padding: 25px; }
 
 .forgot-link { margin-top: 20px; }
 
-/* 0 - form *******************************************/
+/* Forms *******************************************/
 
 .red-button { background: $button-bg; border: none; color: $button-text; @include border-radius(0); font-size: 14px; display: block; width: 225px !important; margin-top: 20px; padding: 10px 0px 10px 0px; text-align: center; cursor: pointer; }
 .red-button:hover { background: $button-hover-bg; }
@@ -79,7 +85,7 @@ a.red-button:hover { color: white; }
 .field-message { height: 75px; width: 434px; border: none; padding: 10px 0px 0px 15px; margin-bottom:20px; color: $font-color; background: #E2E2E2; }
 
 .content-link { display: block; width: 225px; float: right; font-family: $heading-fonts; font-weight: bold; color: black; font-size: 15px;}
-.sign-in { margin: -46px 842px 0 10px; }
+.sign-in { margin: -46px 701px 0 10px; }
 .forgot-password { margin: -46px 351px 0 10px; }
 .cancel { margin: 30px 625px 0 0;}
 
@@ -94,7 +100,7 @@ span.error { color: #F03; display: block;	}
 
 #user_preference { height: 43px; }
 
-/* 0 - Contacts **********************************************/
+/* Contacts **********************************************/
 
 #contacts_header { background-color: white; @include box-shadow(0 8px 8px -6px #C2C2C2); margin-bottom: 15px; overflow: hidden; }
 .red-button.contacts {margin-top: 0px; height: 23px; }
@@ -112,18 +118,15 @@ tr:hover { background-color: #F3F4F4; }
 .red-links { background: $button-bg; border: none; color: $button-text; @include border-radius(0); margin: 20px 2px 0px 0px;  padding: 8px 15px; text-align: center; cursor: pointer; }
 .red-links:hover { background: $button-hover-bg; color: #F5F5F5;}
 .invisible { visibility: hidden; }
-/* 0 - NOTIFIY FORM *******************************************/
+
+/* Notify Form *******************************************/
+
 label.radio { display: inline-block; margin-right: 10px; }
 
-/* 0 - Messages *******************************************/
+/* Messages *******************************************/
+
 #counter { float: right; margin-right: 935px; width: 50px;}
 
 .collection_radio_buttons { display: inline; margin: 0px 8px 0 6px; }
 
 input#message_message_type_id_1, input#message_message_type_id_2, input#message_message_type_id_3 { margin-bottom: 5px;}
-/* 0 - footer *******************************************/
-footer {
-	background: #333333; color: #999; height: 30px; padding: 15px 0px 10px 25px;
-
-	li { display: inline;} 
-}
