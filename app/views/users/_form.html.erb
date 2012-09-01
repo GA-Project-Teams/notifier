@@ -1,15 +1,4 @@
 <%= simple_form_for(@user) do |f| %>
- <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <p><%= pluralize(@user.errors.count, "error") %> prohibited this widget from being saved:</p>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class='inputs'>
     <% generated_password = Devise.friendly_token.first(10) %>

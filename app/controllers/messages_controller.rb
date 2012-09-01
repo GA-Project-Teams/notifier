@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   load_and_authorize_resource
   def new
     @message = Message.new
+    @user = User.find(params[:user_id]) if params[:user_id]
   end
   
   def create
@@ -15,11 +16,6 @@ class MessagesController < ApplicationController
     else
       render action: 'new'
     end
-  end
-  
-  def notify
-    @message = Message.new
-    @user = User.find(params[:id])
   end
 
 end

@@ -6,7 +6,7 @@
 
   		<label class="string required" for="message_to_user_name"><abbr title="required"></abbr>Who would you like to notify? </label>
   
-    <% if controller.action_name == 'notify' %>
+    <% if @user %>
 
     		<input class="string required typeahead field-name" data-provide="typeahead" id="message_to_user_name"  placeholder="start typing name" value= "<%= @user.full_name %>" readonly="readonly" />
     	</div> 

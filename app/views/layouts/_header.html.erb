@@ -19,6 +19,11 @@
           <%= link_to "VIEW CONTACTS", users_path %><span class="line">|</span>
           <%= link_to "ADD CONTACT", new_user_path,  :class=>"current" %>
           
+        <% else %>
+          <%= link_to "NOTIFY", root_path %><span class="line">|</span>
+          <%= link_to "VIEW CONTACTS", users_path %><span class="line">|</span>
+          <%= link_to "ADD CONTACT", new_user_path %>
+
         <% end %>
             
       <% end %>

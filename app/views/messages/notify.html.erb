@@ -1,4 +1,10 @@
 <section class="span12">
+	<% if flash[:notice] %>
+	  <p class="notice"><%= flash[:notice] %></p>
+	<% end %>
+	<% if flash[:error] %>
+	  <p class="error"><%= flash[:error] %></p>
+	<% end %>
 	<section id="content-area" class="span12">
 	<h2>Notify</h2>
 	<div class="row">
