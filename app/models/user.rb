@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   rolify
   has_many    :messages
-  before_save :set_password_token
-  after_save  :normalize_phone_number
+  before_save :set_password_token, :normalize_phone_number
+  # after_save  :normalize_phone_number
 
   # after_save :send_welcome_email
   scope :by_company, order("company_name ASC")
@@ -44,8 +44,8 @@ class User < ActiveRecord::Base
   end
 
   def normalize_phone_number
-    self.phone_number.rstrip!
-    self.phone_number.gsub!(/[-. ]/,'')
+    self.phone_number = self.phone_number.rstrip
+    self.phone_number = self.phone_number.gsub(/[-. ]/,'')
   end
   
   def send_welcome_email

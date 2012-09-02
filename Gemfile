@@ -56,6 +56,8 @@ gem 'twilio-ruby'
 gem 'ransack'
 gem 'rolify'
 gem 'cancan'
+
+gem 'rack-mini-profiler'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
