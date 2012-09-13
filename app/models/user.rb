@@ -1,17 +1,17 @@
 class User < ActiveRecord::Base
   rolify
-  has_many    :messages
-  before_save :set_password_token, :normalize_phone_number
-  # after_save  :normalize_phone_number
-
-  # after_save :send_welcome_email
-  scope :by_company, order("company_name ASC")
+  has_many        :messages
+  before_save     :normalize_phone_number
+  before_create   :set_password_token
+  after_create    :send_welcome_email
   
+  scope           :by_company, order("company_name ASC")
+    
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, # :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise          :database_authenticatable, # :registerable,
+                  :recoverable, :rememberable, :trackable, :validatable
          
   attr_accessor :enable_strict_validation
 
@@ -32,7 +32,11 @@ class User < ActiveRecord::Base
   def role_symbols
     [role.to_sym]
   end
-  
+
+  def to_s
+    "#{first_name} #{last_name}"
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -44,8 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def normalize_phone_number
-    self.phone_number = self.phone_number.rstrip
-    self.phone_number = self.phone_number.gsub(/[-. ]/,'')
+    self.phone_number = self.phone_number.rstrip.gsub(/[-. ]/,'')
   end
   
   def send_welcome_email

@@ -8,7 +8,7 @@
   
     <% if @user %>
 
-    		<input class="string required typeahead field-name" data-provide="typeahead" id="message_to_user_name"  placeholder="start typing name" value= "<%= @user.full_name %>" readonly="readonly" />
+    		<input class="string required typeahead field-name" data-provide="typeahead" id="message_to_user_name"  placeholder="start typing name" value= "<%= @user %>" readonly="readonly" />
     	</div> 
       <div id="counter">160</div>
       <%= f.input :user_id, :input_html => { :value => @user.id }, :as => :hidden %>
