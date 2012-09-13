@@ -41,7 +41,7 @@ Update your seed file accordingly, example below:
 
 Run and let the magic happen
 
-```ruby
+```sh
 rake db:setup
 ```
 
@@ -62,13 +62,13 @@ The [heroku san](https://github.com/fastestforward/heroku_san) has been added to
 Contributors
 ============
 
-- [Peter To](https://github.com/peterto)
-- [Michael Green](https://github.com/greenm2)
 - [Jason Culler](http://www.behance.net/jasonculler)
+- [Michael Green](https://github.com/greenm2)
+- [Peter To](https://github.com/peterto)
 
 Mentors and cool dudes
 ======================
 
 - [Michael Hamrah](https://github.com/mhamrah)
-- [Aaron Smyth](https://github.com/aas395)
 - [Adrian Ryan](https://github.com/1point618)
+- [Aaron Smyth](https://github.com/aas395)
