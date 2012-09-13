@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       # UserMailer.signup_confirmation(@user).deliver
       redirect_to(@user, :notice => 'CONTACT ADDED Success! Your contact has been added and an email has been sent to the address provided.')
     else
-      render action: 'edit'
+      render :new
     end
   end
   
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       # sign_in @user, :bypass => true
       redirect_to(@user, :notice => 'CONTACT UPDATE Success!')
     else
-      render action: 'edit'
+      render :edit
     end
   end
   

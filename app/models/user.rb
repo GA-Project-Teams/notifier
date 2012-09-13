@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   rolify
   has_many        :messages
   before_save     :normalize_phone_number
-  after_create    :set_password_token, :send_welcome_email
+  before_create   :set_password_token
+  after_create    :send_welcome_email
+  
   scope           :by_company, order("company_name ASC")
     
   # Include default devise modules. Others available are:
