@@ -51,6 +51,7 @@ describe "UserManagementPages" do
       click_button "Sign in"
       
       page.should have_content(@user.first_name)
+      # page.should have_content(@user.last_name)
       click_link "VIEW CONTACTS"
     end
     
@@ -60,11 +61,11 @@ describe "UserManagementPages" do
         page.current_path.should == users_path
         users = User.all
 
-        users.each do |u|
-          page.should have_content(u.first_name)
-          page.should have_content(u.last_name)
-          page.should have_content(u.email)
-          page.should have_content(u.company_name)
+        users.each do |user|
+          page.should have_content(user.first_name)
+          # page.should have_content(user.last_name)
+          page.should have_content(user.email)
+          page.should have_content(user.company_name)
           page.should have_link("NOTIFY")
           page.should have_link("EDIT")
           page.should have_link("DELETE")
@@ -87,23 +88,24 @@ describe "UserManagementPages" do
 
       it "and search by user first name" do
         fill_in 'q_first_name_or_last_name_or_company_name_cont', :with => @user.first_name
-        page.should have_content(@user.full_name)
+        page.should have_content(@user.first_name)
         page.should have_content(@user.company_name)
         page.should have_content(@user.phone_number)
         
       end
 
-      it "and search by user last anem" do
+      it "and search by user last name" do
         fill_in 'q_first_name_or_last_name_or_company_name_cont', :with => @user.last_name
-        page.should have_content(@user.full_name)
+        page.should have_content(@user.last_name)
         page.should have_content(@user.company_name)
         page.should have_content(@user.phone_number)
         
       end
 
-      it "and search by user last anem" do
+      it "and search by user last name" do
         fill_in 'q_first_name_or_last_name_or_company_name_cont', :with => @user.company_name
-        page.should have_content(@user.full_name)
+        page.should have_content(@user.first_name)
+        page.should have_content(@user.last_name)
         page.should have_content(@user.company_name)
         page.should have_content(@user.phone_number)
 

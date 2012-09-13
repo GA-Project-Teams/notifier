@@ -1,13 +1,12 @@
 class Message < ActiveRecord::Base
-  belongs_to :user
-  after_save :send_notification
-  # attr_accessible :content, :user_id, :from_user_id, :message_type_id
+  belongs_to      :user
+  after_save      :send_notification
   attr_accessible :content, :user_id, :from_user_id, :message_type_id
   
-  validates :content, :presence => true
-  validates :user_id, :presence => true
-  validates :from_user_id, :presence => true
-  validates :message_type_id, :presence => true
+  validates       :content, :presence => true
+  validates       :user_id, :presence => true
+  validates       :from_user_id, :presence => true
+  validates       :message_type_id, :presence => true
 
   def send_notification
     if (self.message_type_id == 3)

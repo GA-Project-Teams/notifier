@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!
 
   load_and_authorize_resource
+  
   def new
     @message = Message.new
     @user = User.find(params[:user_id]) if params[:user_id]

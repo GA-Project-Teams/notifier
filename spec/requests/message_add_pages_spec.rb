@@ -18,7 +18,7 @@ describe "MessageAddPages" do
   
   context "can send notification to a user" do
 
-    it "when email is selected", :js => true do
+    it "when email is selected" do
       selector = '#message_to_user_name'
       to_user = Factory.create(:user, :preference => '2')
 
