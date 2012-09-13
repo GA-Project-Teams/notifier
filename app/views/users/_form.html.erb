@@ -19,7 +19,7 @@
 
     </div>
 
-    <% if controller.action_name == 'new' %>
+    <% if controller.action_name == 'new' || controller.action_name == 'create' %>
       <div class="row">
         <%= f.input :password, :readonly => true, :wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
         <%= f.input :password_confirmation, :readonly => true,:wrapper_html=> { :class=> "span3" }, :input_html => { :value => generated_password, :class=> "field-name" }, :as => :hidden %>
@@ -35,7 +35,7 @@
 
   </div>
   <div class="row">
-    <% if current_page?( :action => 'new' ) %>
+    <% if controller.action_name == 'new' || controller.action_name == 'create' %>
       <div class='actions span3'>
       <%= f.button :submit, "ADD CONTACT", :class => "red-button" %>
     <% else %> 

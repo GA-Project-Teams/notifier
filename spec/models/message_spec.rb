@@ -66,8 +66,8 @@ describe Message do
   it { should validate_presence_of(:from_user_id) }
   it { should validate_presence_of(:message_type_id) }
   
-  it "should change the number of messages by 1" do
-    expect { message = Factory(:message) }.to change { Message.count }.by(1)
-  end
+  # it "should change the number of messages by 1" do
+  #   expect { message = Factory(:message) }.to change { Message.count }.by(1)
+  # end
   
 end

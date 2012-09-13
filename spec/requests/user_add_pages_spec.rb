@@ -35,6 +35,22 @@ describe "UserAddPages" do
       ActionMailer::Base.deliveries.should_not be_empty
        
     end
+
+    it "and cannot add user with existing email address" do
+      user = Factory.create(:user)
+            
+      fill_in 'user_first_name', :with => Faker::Name.first_name
+      fill_in 'user_last_name', :with => Faker::Name.last_name
+      fill_in 'user_email', :with => user.email
+      fill_in 'user_company_name', :with => Faker::Company.name
+      fill_in 'user_phone_number', :with => Faker::PhoneNumber.phone_number
+      # select 'users_preference', :with => @user.preference
+     
+      click_button "ADD CONTACT" 
+
+      page.should have_content("has already been taken")
+      
+    end
     
     it "and cancel adding users" do
       click_link "OR CANCEL"
